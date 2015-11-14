@@ -14,14 +14,6 @@
 		A85CC5971BF645580052080F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A85CC5951BF645580052080F /* Main.storyboard */; };
 		A85CC59C1BF645580052080F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A85CC59B1BF645580052080F /* Assets.xcassets */; };
 		A85CC59F1BF645580052080F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A85CC59D1BF645580052080F /* LaunchScreen.storyboard */; };
-		A85CC5DD1BF6EC130052080F /* Similar+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = A85CC5CE1BF6EC130052080F /* Similar+CoreDataProperties.m */; };
-		A85CC5DE1BF6EC130052080F /* Similar.m in Sources */ = {isa = PBXBuildFile; fileRef = A85CC5D01BF6EC130052080F /* Similar.m */; };
-		A85CC5DF1BF6EC130052080F /* Ming+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = A85CC5D21BF6EC130052080F /* Ming+CoreDataProperties.m */; };
-		A85CC5E01BF6EC130052080F /* Ming.m in Sources */ = {isa = PBXBuildFile; fileRef = A85CC5D41BF6EC130052080F /* Ming.m */; };
-		A85CC5E11BF6EC130052080F /* Xing+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = A85CC5D61BF6EC130052080F /* Xing+CoreDataProperties.m */; };
-		A85CC5E21BF6EC130052080F /* Xing.m in Sources */ = {isa = PBXBuildFile; fileRef = A85CC5D81BF6EC130052080F /* Xing.m */; };
-		A85CC5E31BF6EC130052080F /* EnglishNameInfo+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = A85CC5DA1BF6EC130052080F /* EnglishNameInfo+CoreDataProperties.m */; };
-		A85CC5E41BF6EC130052080F /* EnglishNameInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = A85CC5DC1BF6EC130052080F /* EnglishNameInfo.m */; };
 		A85CC5E91BF716040052080F /* ResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A85CC5E81BF716040052080F /* ResultViewController.m */; };
 		A85CC5EB1BF728C60052080F /* stats.png in Resources */ = {isa = PBXBuildFile; fileRef = A85CC5EA1BF728C60052080F /* stats.png */; };
 		A85CC5EE1BF729B30052080F /* Xing.txt in Resources */ = {isa = PBXBuildFile; fileRef = A85CC5ED1BF729B30052080F /* Xing.txt */; };
@@ -29,6 +21,12 @@
 		A85CC5F31BF73C620052080F /* Similar.txt in Resources */ = {isa = PBXBuildFile; fileRef = A85CC5F21BF73C620052080F /* Similar.txt */; };
 		A85CC5F51BF74ACE0052080F /* Info.txt in Resources */ = {isa = PBXBuildFile; fileRef = A85CC5F41BF74ACE0052080F /* Info.txt */; };
 		A85CC5FB1BF753880052080F /* chineseToEnglishName.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A85CC5F91BF753880052080F /* chineseToEnglishName.xcdatamodeld */; };
+		A85CC61C1BF7548A0052080F /* Xing+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = A85CC6131BF7548A0052080F /* Xing+CoreDataProperties.m */; };
+		A85CC61D1BF7548A0052080F /* Xing.m in Sources */ = {isa = PBXBuildFile; fileRef = A85CC6151BF7548A0052080F /* Xing.m */; };
+		A85CC61E1BF7548A0052080F /* Similar+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = A85CC6171BF7548A0052080F /* Similar+CoreDataProperties.m */; };
+		A85CC61F1BF7548A0052080F /* Similar.m in Sources */ = {isa = PBXBuildFile; fileRef = A85CC6191BF7548A0052080F /* Similar.m */; };
+		A85CC6251BF75F480052080F /* EnglishNameInfo+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = A85CC6221BF75F480052080F /* EnglishNameInfo+CoreDataProperties.m */; };
+		A85CC6261BF75F480052080F /* EnglishNameInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = A85CC6241BF75F480052080F /* EnglishNameInfo.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,22 +42,6 @@
 		A85CC59E1BF645580052080F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A85CC5A01BF645580052080F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A85CC5A61BF645720052080F /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PrefixHeader.pch; path = ../PrefixHeader.pch; sourceTree = "<group>"; };
-		A85CC5CD1BF6EC130052080F /* Similar+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Similar+CoreDataProperties.h"; sourceTree = "<group>"; };
-		A85CC5CE1BF6EC130052080F /* Similar+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Similar+CoreDataProperties.m"; sourceTree = "<group>"; };
-		A85CC5CF1BF6EC130052080F /* Similar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Similar.h; sourceTree = "<group>"; };
-		A85CC5D01BF6EC130052080F /* Similar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Similar.m; sourceTree = "<group>"; };
-		A85CC5D11BF6EC130052080F /* Ming+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Ming+CoreDataProperties.h"; sourceTree = "<group>"; };
-		A85CC5D21BF6EC130052080F /* Ming+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Ming+CoreDataProperties.m"; sourceTree = "<group>"; };
-		A85CC5D31BF6EC130052080F /* Ming.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ming.h; sourceTree = "<group>"; };
-		A85CC5D41BF6EC130052080F /* Ming.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Ming.m; sourceTree = "<group>"; };
-		A85CC5D51BF6EC130052080F /* Xing+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Xing+CoreDataProperties.h"; sourceTree = "<group>"; };
-		A85CC5D61BF6EC130052080F /* Xing+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Xing+CoreDataProperties.m"; sourceTree = "<group>"; };
-		A85CC5D71BF6EC130052080F /* Xing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Xing.h; sourceTree = "<group>"; };
-		A85CC5D81BF6EC130052080F /* Xing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Xing.m; sourceTree = "<group>"; };
-		A85CC5D91BF6EC130052080F /* EnglishNameInfo+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "EnglishNameInfo+CoreDataProperties.h"; sourceTree = "<group>"; };
-		A85CC5DA1BF6EC130052080F /* EnglishNameInfo+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "EnglishNameInfo+CoreDataProperties.m"; sourceTree = "<group>"; };
-		A85CC5DB1BF6EC130052080F /* EnglishNameInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnglishNameInfo.h; sourceTree = "<group>"; };
-		A85CC5DC1BF6EC130052080F /* EnglishNameInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnglishNameInfo.m; sourceTree = "<group>"; };
 		A85CC5E71BF716040052080F /* ResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultViewController.h; sourceTree = "<group>"; };
 		A85CC5E81BF716040052080F /* ResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultViewController.m; sourceTree = "<group>"; };
 		A85CC5EA1BF728C60052080F /* stats.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stats.png; sourceTree = "<group>"; };
@@ -69,6 +51,18 @@
 		A85CC5F21BF73C620052080F /* Similar.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Similar.txt; sourceTree = "<group>"; };
 		A85CC5F41BF74ACE0052080F /* Info.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Info.txt; sourceTree = "<group>"; };
 		A85CC5FA1BF753880052080F /* chineseToEnglishName.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = chineseToEnglishName.xcdatamodel; sourceTree = "<group>"; };
+		A85CC6121BF7548A0052080F /* Xing+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Xing+CoreDataProperties.h"; sourceTree = "<group>"; };
+		A85CC6131BF7548A0052080F /* Xing+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Xing+CoreDataProperties.m"; sourceTree = "<group>"; };
+		A85CC6141BF7548A0052080F /* Xing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Xing.h; sourceTree = "<group>"; };
+		A85CC6151BF7548A0052080F /* Xing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Xing.m; sourceTree = "<group>"; };
+		A85CC6161BF7548A0052080F /* Similar+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Similar+CoreDataProperties.h"; sourceTree = "<group>"; };
+		A85CC6171BF7548A0052080F /* Similar+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Similar+CoreDataProperties.m"; sourceTree = "<group>"; };
+		A85CC6181BF7548A0052080F /* Similar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Similar.h; sourceTree = "<group>"; };
+		A85CC6191BF7548A0052080F /* Similar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Similar.m; sourceTree = "<group>"; };
+		A85CC6211BF75F480052080F /* EnglishNameInfo+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "EnglishNameInfo+CoreDataProperties.h"; sourceTree = "<group>"; };
+		A85CC6221BF75F480052080F /* EnglishNameInfo+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "EnglishNameInfo+CoreDataProperties.m"; sourceTree = "<group>"; };
+		A85CC6231BF75F480052080F /* EnglishNameInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnglishNameInfo.h; sourceTree = "<group>"; };
+		A85CC6241BF75F480052080F /* EnglishNameInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnglishNameInfo.m; sourceTree = "<group>"; };
 		D02996C1B54D7F70EC498B50 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		EAD913DC13CA434B74259540 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -114,9 +108,7 @@
 		A85CC58B1BF645580052080F /* chineseToEnglishName */ = {
 			isa = PBXGroup;
 			children = (
-				A85CC5F21BF73C620052080F /* Similar.txt */,
-				A85CC5F41BF74ACE0052080F /* Info.txt */,
-				A85CC5ED1BF729B30052080F /* Xing.txt */,
+				A85CC6201BF754C30052080F /* datafile */,
 				A85CC5EC1BF728CC0052080F /* images */,
 				A85CC5B41BF6EBE10052080F /* model */,
 				A85CC58F1BF645580052080F /* AppDelegate.h */,
@@ -149,22 +141,18 @@
 			isa = PBXGroup;
 			children = (
 				A85CC5F91BF753880052080F /* chineseToEnglishName.xcdatamodeld */,
-				A85CC5CD1BF6EC130052080F /* Similar+CoreDataProperties.h */,
-				A85CC5CE1BF6EC130052080F /* Similar+CoreDataProperties.m */,
-				A85CC5CF1BF6EC130052080F /* Similar.h */,
-				A85CC5D01BF6EC130052080F /* Similar.m */,
-				A85CC5D11BF6EC130052080F /* Ming+CoreDataProperties.h */,
-				A85CC5D21BF6EC130052080F /* Ming+CoreDataProperties.m */,
-				A85CC5D31BF6EC130052080F /* Ming.h */,
-				A85CC5D41BF6EC130052080F /* Ming.m */,
-				A85CC5D51BF6EC130052080F /* Xing+CoreDataProperties.h */,
-				A85CC5D61BF6EC130052080F /* Xing+CoreDataProperties.m */,
-				A85CC5D71BF6EC130052080F /* Xing.h */,
-				A85CC5D81BF6EC130052080F /* Xing.m */,
-				A85CC5D91BF6EC130052080F /* EnglishNameInfo+CoreDataProperties.h */,
-				A85CC5DA1BF6EC130052080F /* EnglishNameInfo+CoreDataProperties.m */,
-				A85CC5DB1BF6EC130052080F /* EnglishNameInfo.h */,
-				A85CC5DC1BF6EC130052080F /* EnglishNameInfo.m */,
+				A85CC6211BF75F480052080F /* EnglishNameInfo+CoreDataProperties.h */,
+				A85CC6221BF75F480052080F /* EnglishNameInfo+CoreDataProperties.m */,
+				A85CC6231BF75F480052080F /* EnglishNameInfo.h */,
+				A85CC6241BF75F480052080F /* EnglishNameInfo.m */,
+				A85CC6121BF7548A0052080F /* Xing+CoreDataProperties.h */,
+				A85CC6131BF7548A0052080F /* Xing+CoreDataProperties.m */,
+				A85CC6141BF7548A0052080F /* Xing.h */,
+				A85CC6151BF7548A0052080F /* Xing.m */,
+				A85CC6161BF7548A0052080F /* Similar+CoreDataProperties.h */,
+				A85CC6171BF7548A0052080F /* Similar+CoreDataProperties.m */,
+				A85CC6181BF7548A0052080F /* Similar.h */,
+				A85CC6191BF7548A0052080F /* Similar.m */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -175,6 +163,16 @@
 				A85CC5EA1BF728C60052080F /* stats.png */,
 			);
 			name = images;
+			sourceTree = "<group>";
+		};
+		A85CC6201BF754C30052080F /* datafile */ = {
+			isa = PBXGroup;
+			children = (
+				A85CC5F21BF73C620052080F /* Similar.txt */,
+				A85CC5F41BF74ACE0052080F /* Info.txt */,
+				A85CC5ED1BF729B30052080F /* Xing.txt */,
+			);
+			name = datafile;
 			sourceTree = "<group>";
 		};
 		F8ABD37D5B67311FE5B34CAB /* Pods */ = {
@@ -311,19 +309,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A85CC5E31BF6EC130052080F /* EnglishNameInfo+CoreDataProperties.m in Sources */,
-				A85CC5DD1BF6EC130052080F /* Similar+CoreDataProperties.m in Sources */,
+				A85CC6251BF75F480052080F /* EnglishNameInfo+CoreDataProperties.m in Sources */,
 				A85CC5F11BF72A980052080F /* RelateWorkViewController.m in Sources */,
 				A85CC5941BF645580052080F /* ViewController.m in Sources */,
 				A85CC5911BF645580052080F /* AppDelegate.m in Sources */,
-				A85CC5E01BF6EC130052080F /* Ming.m in Sources */,
-				A85CC5E21BF6EC130052080F /* Xing.m in Sources */,
-				A85CC5E41BF6EC130052080F /* EnglishNameInfo.m in Sources */,
-				A85CC5E11BF6EC130052080F /* Xing+CoreDataProperties.m in Sources */,
+				A85CC61F1BF7548A0052080F /* Similar.m in Sources */,
+				A85CC61D1BF7548A0052080F /* Xing.m in Sources */,
+				A85CC61C1BF7548A0052080F /* Xing+CoreDataProperties.m in Sources */,
+				A85CC6261BF75F480052080F /* EnglishNameInfo.m in Sources */,
+				A85CC61E1BF7548A0052080F /* Similar+CoreDataProperties.m in Sources */,
 				A85CC58E1BF645580052080F /* main.m in Sources */,
 				A85CC5FB1BF753880052080F /* chineseToEnglishName.xcdatamodeld in Sources */,
-				A85CC5DF1BF6EC130052080F /* Ming+CoreDataProperties.m in Sources */,
-				A85CC5DE1BF6EC130052080F /* Similar.m in Sources */,
 				A85CC5E91BF716040052080F /* ResultViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

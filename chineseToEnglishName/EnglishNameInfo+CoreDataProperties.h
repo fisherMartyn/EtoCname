@@ -17,10 +17,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nullable, nonatomic, retain) NSString *chineseName;
 @property (nullable, nonatomic, retain) NSString *englishName;
-@property (nullable, nonatomic, retain) NSString *fayin;
-@property (nullable, nonatomic, retain) NSNumber *popularCnt;
-@property (nullable, nonatomic, retain) NSNumber *pronunceCnt;
-@property (nullable, nonatomic, retain) NSNumber *sexInfo;
+@property (nullable, nonatomic, retain) NSString *popularCnt;
+@property (nullable, nonatomic, retain) NSString *sexInfo;
+@property (nullable, nonatomic, retain) NSString *englishNameCnt;
+@property (nullable, nonatomic, retain) NSString *chineseNameCnt;
+@property (nullable, nonatomic, retain) NSString *englishFayin;
+@property (nullable, nonatomic, retain) NSString *pinyinFayin;
 
 @end
 

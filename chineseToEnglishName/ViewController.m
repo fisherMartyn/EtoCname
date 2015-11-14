@@ -9,6 +9,8 @@
 #import "ViewController.h"
 #import "AppDelegate.h"
 #import "Xing.h"
+#import "Similar.h"
+#import "EnglishNameInfo.h"
 #import "ResultViewController.h"
 #import <Masonry.h>
 
@@ -24,14 +26,19 @@
 @property (nonatomic,strong) OtherBtn *shortBtn;
 @property (nonatomic,strong) OtherBtn *longBtn;
 @property (nonatomic,strong) OtherBtn *confirm;
+
+@property (nonatomic) id genderid;
+@property (nonatomic) id soundid;
+@property (nonatomic) id lengthid;
+
 @end
 
 @implementation ViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
     
+    /* navi 设置*/
     [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
     self.navigationController.navigationBar.shadowImage = [UIImage new];
     self.navigationController.navigationBar.translucent = YES;
@@ -61,6 +68,8 @@
         [self loadData];
     }
     
+    
+    /* 页面布局 */
     WS(ws);
     [self.textView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(ws.view.mas_centerX);
@@ -123,28 +132,38 @@
 -(void) loadData
 {
     //从文件里读姓
+    [self deleteAllData];
     NSString*filePath=[[NSBundle mainBundle] pathForResource:@"Xing"ofType:@"txt"];
-    NSError *err;
-    NSString *str = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:&err];
+    NSError *error;
+    NSString *str = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:&error];
+    
+    AppDelegate *appdelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
     NSArray *rows = [str componentsSeparatedByString:@"\n"];
-    /*
     for (NSString *row in rows)
     {
         NSArray *fields = [row componentsSeparatedByString:@"--"];
         NSString *chinese = [fields firstObject];
-        NSLog(@"%@",chinese);
+        
         NSArray *english = [[fields lastObject] componentsSeparatedByString:@"/"];
         for (NSString * word in english) {
-            NSLog(@"%@",word);
+            if (![word isEqualToString:@""]) {
+                Xing *entry = [NSEntityDescription insertNewObjectForEntityForName:@"Xing" inManagedObjectContext:appdelegate.managedObjectContext];
+                [entry setEnglish:word];
+                [entry setChinese:chinese];
+                
+            }
         }
     }
-     */
-    //从文件里读相似文件
     
-    /*
+    BOOL isSaveSuccess = [appdelegate.managedObjectContext save:&error];
+    if (!isSaveSuccess) {
+        NSLog(@"Error: %@,%@",error,[error userInfo]);
+    }
+    
+    
     filePath = [[NSBundle mainBundle] pathForResource:@"Similar" ofType:@"txt"];
-    str = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:&err];
+    str = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:&error];
     rows = [str componentsSeparatedByString:@"\n"];
     
     int groupid = 1;
@@ -155,15 +174,21 @@
             if ([aname isEqualToString:@""]) {
                 continue;
             }
-            NSLog(@"%@ %d",aname,groupid);
+            Similar *similar = [NSEntityDescription insertNewObjectForEntityForName:@"Similar" inManagedObjectContext:appdelegate.managedObjectContext];
+            [similar setGroupid:[NSNumber numberWithInt:groupid]];
+            [similar setC_name:aname];
         }
         ++groupid;
     }
-     */
+    
+    isSaveSuccess = [appdelegate.managedObjectContext save:&error];
+    if (!isSaveSuccess) {
+        NSLog(@"Error: %@,%@",error,[error userInfo]);
+    }
     
     //从文件里读取
     filePath = [[NSBundle mainBundle] pathForResource:@"Info" ofType:@"txt"];
-    str = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:&err];
+    str = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:&error];
     
     rows = [str componentsSeparatedByString:@"\n"];
     
@@ -180,45 +205,63 @@
         NSString *englishFayin = [fields objectAtIndex:5];
         NSString *popularCnt = [fields objectAtIndex:6];
         NSString *pinyinFayin = [fields objectAtIndex:7];
-        NSLog(@"%@",fields);
+        
+        EnglishNameInfo *info = [NSEntityDescription insertNewObjectForEntityForName:@"EnglishNameInfo" inManagedObjectContext:appdelegate.managedObjectContext];
+        [info setEnglishName:englishName];
+        [info setEnglishNameCnt:englishNameCnt];
+        [info setChineseName:chineseName];
+        [info setChineseNameCnt:chineseNameCnt];
+        [info setSexInfo:sexInfo];
+        [info setEnglishFayin:englishFayin];
+        [info setPopularCnt:popularCnt];
+        [info setPinyinFayin:pinyinFayin];
     }
     
-    
-#if 0
-    //test coredata
-    //save data
-    AppDelegate *appdelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    Xing *entry = [NSEntityDescription insertNewObjectForEntityForName:@"Xing" inManagedObjectContext:appdelegate.managedObjectContext];
-    [entry setEnglish:@"eng"];
-    [entry setChinese:@"中文"];
-    NSError *error;
-    
-    //托管对象准备好后，调用托管对象上下文的save方法将数据写入数据库
-    BOOL isSaveSuccess = [appdelegate.managedObjectContext save:&error];
-    
+    isSaveSuccess = [appdelegate.managedObjectContext save:&error];
     if (!isSaveSuccess) {
         NSLog(@"Error: %@,%@",error,[error userInfo]);
-    }else {
-        NSLog(@"Save successful!");
     }
-#endif
+    //[self fetchData];
 }
--(void) fetchData
+
+-(void) fetchData //for test
 {
+    /*
     //load data
     
     AppDelegate *appdelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:@"Xing"];
+    NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:@"Similar"];
     NSError *error;
-    NSPredicate *predict = [NSPredicate predicateWithFormat:@"english=\"eng\""];
     request.predicate = predict;
     NSMutableArray *mutableFetchResult = [[appdelegate.managedObjectContext executeFetchRequest:request error:&error] mutableCopy];
-    for (Xing *entry in mutableFetchResult) {
-        NSLog(@"%@ --- %@" ,entry.chinese,entry.english);
+    for (Similar *entry in mutableFetchResult) {
+        NSLog(@"%@ --- %@" ,entry.groupid ,entry.c_name);
     }
-
-    
+    */
 }
+
+-(void)deleteAllData
+{
+    [self deleteDataByEntityName:@"Xing"];
+    [self deleteDataByEntityName:@"Similar"];
+    [self deleteDataByEntityName:@"EnglishNameInfo"];
+}
+-(void) deleteDataByEntityName:(NSString *)entityName
+{
+    AppDelegate *appdelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:entityName];
+    [request setIncludesPropertyValues:NO];
+    NSError *error;
+    NSArray *fetchedObjects = [appdelegate.managedObjectContext executeFetchRequest:request error:&error];
+    for (NSManagedObject *object in fetchedObjects)
+    {
+        [appdelegate.managedObjectContext deleteObject:object];
+    }
+    
+    error = nil;
+    [appdelegate.managedObjectContext save:&error];
+}
+
 
 -(UITextField*) textView
 {
@@ -237,10 +280,10 @@
 
 -(void) GenderSelect:(GenderBtn *)sender
 {
+    [sender setSelected:!sender.isSelected];
     [self.leftBtn setSelected:NO];
     [self.middleBtn setSelected:NO];
     [self.rightBtn setSelected:NO];
-    [sender setSelected:YES];
 }
 -(GenderBtn*) leftBtn
 {
@@ -249,6 +292,7 @@
         [_leftBtn setTitle:@"女" forState:UIControlStateNormal];
         [_leftBtn setTitle:@"女" forState:UIControlStateSelected];
         [_leftBtn addTarget:self action:@selector(GenderSelect:) forControlEvents:UIControlEventTouchUpInside];
+        _leftBtn.tag = 1;
     }
     return _leftBtn;
 }
@@ -258,6 +302,7 @@
         _middleBtn = [[GenderBtn alloc] initWithFrame:CGRectZero];
         [_middleBtn setTitle:@"中性" forState:UIControlStateNormal];
         [_middleBtn setTitle:@"中性" forState:UIControlStateSelected];
+        _middleBtn.tag = 2;
         [_middleBtn addTarget:self action:@selector(GenderSelect:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _middleBtn;
@@ -268,6 +313,7 @@
         _rightBtn = [[GenderBtn alloc] initWithFrame:CGRectZero];
         [_rightBtn setTitle:@"男" forState:UIControlStateNormal];
         [_rightBtn setTitle:@"男" forState:UIControlStateSelected];
+        _rightBtn.tag = 3;
         [_rightBtn addTarget:self action:@selector(GenderSelect:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _rightBtn;
@@ -277,6 +323,7 @@
 {
     if (!_sound2) {
         _sound2 = [[OtherBtn alloc] initWithFrame:CGRectZero];
+        _sound2.tag = 1;
         [_sound2 setTitle:@"两音" forState:UIControlStateNormal];
     }
     return _sound2;
@@ -286,6 +333,7 @@
     if (!_sound3) {
         _sound3 = [[OtherBtn alloc] initWithFrame:CGRectZero];
         [_sound3 setTitle:@"三音" forState:UIControlStateNormal];
+        _sound3.tag = 2;
     }
     return _sound3;
 }
@@ -295,6 +343,7 @@
     if (!_shortBtn) {
         _shortBtn = [[OtherBtn alloc] initWithFrame:CGRectZero];
         [_shortBtn setTitle:@"短名" forState:UIControlStateNormal];
+        _shortBtn.tag = 1;
     }
     return _shortBtn;
 }
@@ -304,6 +353,7 @@
     if (!_longBtn) {
         _longBtn = [[OtherBtn alloc] initWithFrame:CGRectZero];
         [_longBtn setTitle:@"长名" forState:UIControlStateNormal];
+        _longBtn.tag = 2;
     }
     return _longBtn;
 }

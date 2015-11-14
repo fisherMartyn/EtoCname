@@ -15,9 +15,11 @@
 
 @dynamic chineseName;
 @dynamic englishName;
-@dynamic fayin;
 @dynamic popularCnt;
-@dynamic pronunceCnt;
 @dynamic sexInfo;
+@dynamic englishNameCnt;
+@dynamic chineseNameCnt;
+@dynamic englishFayin;
+@dynamic pinyinFayin;
 
 @end

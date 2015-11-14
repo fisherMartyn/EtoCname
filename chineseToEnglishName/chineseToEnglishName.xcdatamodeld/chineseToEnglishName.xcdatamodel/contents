@@ -2,13 +2,13 @@
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9057" systemVersion="15A278b" minimumToolsVersion="Automatic">
     <entity name="EnglishNameInfo" representedClassName="EnglishNameInfo" syncable="YES">
         <attribute name="chineseName" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="chineseNameCnt" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="chineseNameCnt" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="englishFayin" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="englishName" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="englishNameCnt" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="pinyinFayin" optional="YES" syncable="YES"/>
-        <attribute name="popularCnt" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="sexInfo" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="englishNameCnt" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="pinyinFayin" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="popularCnt" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="sexInfo" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="Similar" representedClassName="Similar" syncable="YES">
         <attribute name="c_name" optional="YES" attributeType="String" syncable="YES"/>
