@@ -1,4 +1,26 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model name="Test1.xcdatamodel" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="11A491" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
-    <elements/>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9057" systemVersion="15A278b" minimumToolsVersion="Automatic">
+    <entity name="EnglishNameInfo" representedClassName="EnglishNameInfo" syncable="YES">
+        <attribute name="chineseName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="chineseNameCnt" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="englishFayin" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="englishName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="englishNameCnt" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="pinyinFayin" optional="YES" syncable="YES"/>
+        <attribute name="popularCnt" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="sexInfo" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+    </entity>
+    <entity name="Similar" representedClassName="Similar" syncable="YES">
+        <attribute name="c_name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="groupid" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+    </entity>
+    <entity name="Xing" representedClassName="Xing" syncable="YES">
+        <attribute name="chinese" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="english" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Xing" positionX="-162" positionY="-21" width="128" height="75"/>
+        <element name="EnglishNameInfo" positionX="-27" positionY="99" width="128" height="163"/>
+        <element name="Similar" positionX="-297" positionY="114" width="128" height="73"/>
+    </elements>
 </model>

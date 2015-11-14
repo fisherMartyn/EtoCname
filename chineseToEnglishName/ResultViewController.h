@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  ResultViewController.h
 //  chineseToEnglishName
 //
 //  Created by yujixing on 15/11/14.
@@ -8,17 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
-
-@end
-
-
-
-@interface GenderBtn : UIButton
+@interface ResultViewController : UIViewController
 
 @end
 
-@interface OtherBtn : UIButton
+@interface ResultScrollView : UIScrollView
 
 @end

@@ -7,16 +7,32 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3103BD0C2652A37BB20E50DF /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EAD913DC13CA434B74259540 /* libPods.a */; };
 		A85CC58E1BF645580052080F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A85CC58D1BF645580052080F /* main.m */; };
 		A85CC5911BF645580052080F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A85CC5901BF645580052080F /* AppDelegate.m */; };
 		A85CC5941BF645580052080F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A85CC5931BF645580052080F /* ViewController.m */; };
 		A85CC5971BF645580052080F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A85CC5951BF645580052080F /* Main.storyboard */; };
-		A85CC59A1BF645580052080F /* chineseToEnglishName.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A85CC5981BF645580052080F /* chineseToEnglishName.xcdatamodeld */; };
 		A85CC59C1BF645580052080F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A85CC59B1BF645580052080F /* Assets.xcassets */; };
 		A85CC59F1BF645580052080F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A85CC59D1BF645580052080F /* LaunchScreen.storyboard */; };
+		A85CC5DD1BF6EC130052080F /* Similar+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = A85CC5CE1BF6EC130052080F /* Similar+CoreDataProperties.m */; };
+		A85CC5DE1BF6EC130052080F /* Similar.m in Sources */ = {isa = PBXBuildFile; fileRef = A85CC5D01BF6EC130052080F /* Similar.m */; };
+		A85CC5DF1BF6EC130052080F /* Ming+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = A85CC5D21BF6EC130052080F /* Ming+CoreDataProperties.m */; };
+		A85CC5E01BF6EC130052080F /* Ming.m in Sources */ = {isa = PBXBuildFile; fileRef = A85CC5D41BF6EC130052080F /* Ming.m */; };
+		A85CC5E11BF6EC130052080F /* Xing+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = A85CC5D61BF6EC130052080F /* Xing+CoreDataProperties.m */; };
+		A85CC5E21BF6EC130052080F /* Xing.m in Sources */ = {isa = PBXBuildFile; fileRef = A85CC5D81BF6EC130052080F /* Xing.m */; };
+		A85CC5E31BF6EC130052080F /* EnglishNameInfo+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = A85CC5DA1BF6EC130052080F /* EnglishNameInfo+CoreDataProperties.m */; };
+		A85CC5E41BF6EC130052080F /* EnglishNameInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = A85CC5DC1BF6EC130052080F /* EnglishNameInfo.m */; };
+		A85CC5E91BF716040052080F /* ResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A85CC5E81BF716040052080F /* ResultViewController.m */; };
+		A85CC5EB1BF728C60052080F /* stats.png in Resources */ = {isa = PBXBuildFile; fileRef = A85CC5EA1BF728C60052080F /* stats.png */; };
+		A85CC5EE1BF729B30052080F /* Xing.txt in Resources */ = {isa = PBXBuildFile; fileRef = A85CC5ED1BF729B30052080F /* Xing.txt */; };
+		A85CC5F11BF72A980052080F /* RelateWorkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A85CC5F01BF72A980052080F /* RelateWorkViewController.m */; };
+		A85CC5F31BF73C620052080F /* Similar.txt in Resources */ = {isa = PBXBuildFile; fileRef = A85CC5F21BF73C620052080F /* Similar.txt */; };
+		A85CC5F51BF74ACE0052080F /* Info.txt in Resources */ = {isa = PBXBuildFile; fileRef = A85CC5F41BF74ACE0052080F /* Info.txt */; };
+		A85CC5FB1BF753880052080F /* chineseToEnglishName.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A85CC5F91BF753880052080F /* chineseToEnglishName.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9E364D211019377E7648A708 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		A85CC5891BF645580052080F /* chineseToEnglishName.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = chineseToEnglishName.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A85CC58D1BF645580052080F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		A85CC58F1BF645580052080F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -24,10 +40,37 @@
 		A85CC5921BF645580052080F /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		A85CC5931BF645580052080F /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		A85CC5961BF645580052080F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		A85CC5991BF645580052080F /* chineseToEnglishName.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = chineseToEnglishName.xcdatamodel; sourceTree = "<group>"; };
 		A85CC59B1BF645580052080F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A85CC59E1BF645580052080F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A85CC5A01BF645580052080F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A85CC5A61BF645720052080F /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PrefixHeader.pch; path = ../PrefixHeader.pch; sourceTree = "<group>"; };
+		A85CC5CD1BF6EC130052080F /* Similar+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Similar+CoreDataProperties.h"; sourceTree = "<group>"; };
+		A85CC5CE1BF6EC130052080F /* Similar+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Similar+CoreDataProperties.m"; sourceTree = "<group>"; };
+		A85CC5CF1BF6EC130052080F /* Similar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Similar.h; sourceTree = "<group>"; };
+		A85CC5D01BF6EC130052080F /* Similar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Similar.m; sourceTree = "<group>"; };
+		A85CC5D11BF6EC130052080F /* Ming+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Ming+CoreDataProperties.h"; sourceTree = "<group>"; };
+		A85CC5D21BF6EC130052080F /* Ming+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Ming+CoreDataProperties.m"; sourceTree = "<group>"; };
+		A85CC5D31BF6EC130052080F /* Ming.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ming.h; sourceTree = "<group>"; };
+		A85CC5D41BF6EC130052080F /* Ming.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Ming.m; sourceTree = "<group>"; };
+		A85CC5D51BF6EC130052080F /* Xing+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Xing+CoreDataProperties.h"; sourceTree = "<group>"; };
+		A85CC5D61BF6EC130052080F /* Xing+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Xing+CoreDataProperties.m"; sourceTree = "<group>"; };
+		A85CC5D71BF6EC130052080F /* Xing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Xing.h; sourceTree = "<group>"; };
+		A85CC5D81BF6EC130052080F /* Xing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Xing.m; sourceTree = "<group>"; };
+		A85CC5D91BF6EC130052080F /* EnglishNameInfo+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "EnglishNameInfo+CoreDataProperties.h"; sourceTree = "<group>"; };
+		A85CC5DA1BF6EC130052080F /* EnglishNameInfo+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "EnglishNameInfo+CoreDataProperties.m"; sourceTree = "<group>"; };
+		A85CC5DB1BF6EC130052080F /* EnglishNameInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnglishNameInfo.h; sourceTree = "<group>"; };
+		A85CC5DC1BF6EC130052080F /* EnglishNameInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnglishNameInfo.m; sourceTree = "<group>"; };
+		A85CC5E71BF716040052080F /* ResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultViewController.h; sourceTree = "<group>"; };
+		A85CC5E81BF716040052080F /* ResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultViewController.m; sourceTree = "<group>"; };
+		A85CC5EA1BF728C60052080F /* stats.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stats.png; sourceTree = "<group>"; };
+		A85CC5ED1BF729B30052080F /* Xing.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Xing.txt; sourceTree = "<group>"; };
+		A85CC5EF1BF72A980052080F /* RelateWorkViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RelateWorkViewController.h; sourceTree = "<group>"; };
+		A85CC5F01BF72A980052080F /* RelateWorkViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RelateWorkViewController.m; sourceTree = "<group>"; };
+		A85CC5F21BF73C620052080F /* Similar.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Similar.txt; sourceTree = "<group>"; };
+		A85CC5F41BF74ACE0052080F /* Info.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Info.txt; sourceTree = "<group>"; };
+		A85CC5FA1BF753880052080F /* chineseToEnglishName.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = chineseToEnglishName.xcdatamodel; sourceTree = "<group>"; };
+		D02996C1B54D7F70EC498B50 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		EAD913DC13CA434B74259540 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,17 +78,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3103BD0C2652A37BB20E50DF /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1F27A085AF75418E219BFE16 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EAD913DC13CA434B74259540 /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		A85CC5801BF645580052080F = {
 			isa = PBXGroup;
 			children = (
 				A85CC58B1BF645580052080F /* chineseToEnglishName */,
 				A85CC58A1BF645580052080F /* Products */,
+				F8ABD37D5B67311FE5B34CAB /* Pods */,
+				1F27A085AF75418E219BFE16 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -60,15 +114,24 @@
 		A85CC58B1BF645580052080F /* chineseToEnglishName */ = {
 			isa = PBXGroup;
 			children = (
+				A85CC5F21BF73C620052080F /* Similar.txt */,
+				A85CC5F41BF74ACE0052080F /* Info.txt */,
+				A85CC5ED1BF729B30052080F /* Xing.txt */,
+				A85CC5EC1BF728CC0052080F /* images */,
+				A85CC5B41BF6EBE10052080F /* model */,
 				A85CC58F1BF645580052080F /* AppDelegate.h */,
 				A85CC5901BF645580052080F /* AppDelegate.m */,
 				A85CC5921BF645580052080F /* ViewController.h */,
 				A85CC5931BF645580052080F /* ViewController.m */,
+				A85CC5E71BF716040052080F /* ResultViewController.h */,
+				A85CC5E81BF716040052080F /* ResultViewController.m */,
+				A85CC5EF1BF72A980052080F /* RelateWorkViewController.h */,
+				A85CC5F01BF72A980052080F /* RelateWorkViewController.m */,
 				A85CC5951BF645580052080F /* Main.storyboard */,
 				A85CC59B1BF645580052080F /* Assets.xcassets */,
 				A85CC59D1BF645580052080F /* LaunchScreen.storyboard */,
+				A85CC5A61BF645720052080F /* PrefixHeader.pch */,
 				A85CC5A01BF645580052080F /* Info.plist */,
-				A85CC5981BF645580052080F /* chineseToEnglishName.xcdatamodeld */,
 				A85CC58C1BF645580052080F /* Supporting Files */,
 			);
 			path = chineseToEnglishName;
@@ -82,6 +145,47 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		A85CC5B41BF6EBE10052080F /* model */ = {
+			isa = PBXGroup;
+			children = (
+				A85CC5F91BF753880052080F /* chineseToEnglishName.xcdatamodeld */,
+				A85CC5CD1BF6EC130052080F /* Similar+CoreDataProperties.h */,
+				A85CC5CE1BF6EC130052080F /* Similar+CoreDataProperties.m */,
+				A85CC5CF1BF6EC130052080F /* Similar.h */,
+				A85CC5D01BF6EC130052080F /* Similar.m */,
+				A85CC5D11BF6EC130052080F /* Ming+CoreDataProperties.h */,
+				A85CC5D21BF6EC130052080F /* Ming+CoreDataProperties.m */,
+				A85CC5D31BF6EC130052080F /* Ming.h */,
+				A85CC5D41BF6EC130052080F /* Ming.m */,
+				A85CC5D51BF6EC130052080F /* Xing+CoreDataProperties.h */,
+				A85CC5D61BF6EC130052080F /* Xing+CoreDataProperties.m */,
+				A85CC5D71BF6EC130052080F /* Xing.h */,
+				A85CC5D81BF6EC130052080F /* Xing.m */,
+				A85CC5D91BF6EC130052080F /* EnglishNameInfo+CoreDataProperties.h */,
+				A85CC5DA1BF6EC130052080F /* EnglishNameInfo+CoreDataProperties.m */,
+				A85CC5DB1BF6EC130052080F /* EnglishNameInfo.h */,
+				A85CC5DC1BF6EC130052080F /* EnglishNameInfo.m */,
+			);
+			name = model;
+			sourceTree = "<group>";
+		};
+		A85CC5EC1BF728CC0052080F /* images */ = {
+			isa = PBXGroup;
+			children = (
+				A85CC5EA1BF728C60052080F /* stats.png */,
+			);
+			name = images;
+			sourceTree = "<group>";
+		};
+		F8ABD37D5B67311FE5B34CAB /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9E364D211019377E7648A708 /* Pods.debug.xcconfig */,
+				D02996C1B54D7F70EC498B50 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -89,9 +193,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A85CC5A31BF645580052080F /* Build configuration list for PBXNativeTarget "chineseToEnglishName" */;
 			buildPhases = (
+				3A7F843F65518A6E65D16813 /* Check Pods Manifest.lock */,
 				A85CC5851BF645580052080F /* Sources */,
 				A85CC5861BF645580052080F /* Frameworks */,
 				A85CC5871BF645580052080F /* Resources */,
+				9E46C0155694F0EE6DE34597 /* Embed Pods Frameworks */,
+				ECE5F50CE06C8752EBA12258 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -139,23 +246,85 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A85CC5EE1BF729B30052080F /* Xing.txt in Resources */,
+				A85CC5F51BF74ACE0052080F /* Info.txt in Resources */,
 				A85CC59F1BF645580052080F /* LaunchScreen.storyboard in Resources */,
+				A85CC5F31BF73C620052080F /* Similar.txt in Resources */,
 				A85CC59C1BF645580052080F /* Assets.xcassets in Resources */,
 				A85CC5971BF645580052080F /* Main.storyboard in Resources */,
+				A85CC5EB1BF728C60052080F /* stats.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		3A7F843F65518A6E65D16813 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		9E46C0155694F0EE6DE34597 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		ECE5F50CE06C8752EBA12258 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		A85CC5851BF645580052080F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A85CC5E31BF6EC130052080F /* EnglishNameInfo+CoreDataProperties.m in Sources */,
+				A85CC5DD1BF6EC130052080F /* Similar+CoreDataProperties.m in Sources */,
+				A85CC5F11BF72A980052080F /* RelateWorkViewController.m in Sources */,
 				A85CC5941BF645580052080F /* ViewController.m in Sources */,
 				A85CC5911BF645580052080F /* AppDelegate.m in Sources */,
-				A85CC59A1BF645580052080F /* chineseToEnglishName.xcdatamodeld in Sources */,
+				A85CC5E01BF6EC130052080F /* Ming.m in Sources */,
+				A85CC5E21BF6EC130052080F /* Xing.m in Sources */,
+				A85CC5E41BF6EC130052080F /* EnglishNameInfo.m in Sources */,
+				A85CC5E11BF6EC130052080F /* Xing+CoreDataProperties.m in Sources */,
 				A85CC58E1BF645580052080F /* main.m in Sources */,
+				A85CC5FB1BF753880052080F /* chineseToEnglishName.xcdatamodeld in Sources */,
+				A85CC5DF1BF6EC130052080F /* Ming+CoreDataProperties.m in Sources */,
+				A85CC5DE1BF6EC130052080F /* Similar.m in Sources */,
+				A85CC5E91BF716040052080F /* ResultViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -265,8 +434,11 @@
 		};
 		A85CC5A41BF645580052080F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9E364D211019377E7648A708 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/PrefixHeader.pch";
 				INFOPLIST_FILE = chineseToEnglishName/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = YM.chineseToEnglishName;
@@ -276,8 +448,11 @@
 		};
 		A85CC5A51BF645580052080F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D02996C1B54D7F70EC498B50 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/PrefixHeader.pch";
 				INFOPLIST_FILE = chineseToEnglishName/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = YM.chineseToEnglishName;
@@ -304,16 +479,17 @@
 				A85CC5A51BF645580052080F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		A85CC5981BF645580052080F /* chineseToEnglishName.xcdatamodeld */ = {
+		A85CC5F91BF753880052080F /* chineseToEnglishName.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				A85CC5991BF645580052080F /* chineseToEnglishName.xcdatamodel */,
+				A85CC5FA1BF753880052080F /* chineseToEnglishName.xcdatamodel */,
 			);
-			currentVersion = A85CC5991BF645580052080F /* chineseToEnglishName.xcdatamodel */;
+			currentVersion = A85CC5FA1BF753880052080F /* chineseToEnglishName.xcdatamodel */;
 			path = chineseToEnglishName.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
