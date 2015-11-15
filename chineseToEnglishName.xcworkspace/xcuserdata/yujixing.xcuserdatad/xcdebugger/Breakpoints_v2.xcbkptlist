@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "chineseToEnglishName/ViewController.m"
-            timestampString = "469203065.415771"
+            timestampString = "469270742.983472"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "246"
-            endingLineNumber = "246"
+            startingLineNumber = "260"
+            endingLineNumber = "260"
             landmarkName = "-deleteAllData"
             landmarkType = "5">
          </BreakpointContent>
@@ -42,43 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "chineseToEnglishName/ViewController.m"
-            timestampString = "469203065.415771"
+            timestampString = "469270742.983472"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "141"
-            endingLineNumber = "141"
-            landmarkName = "-loadData"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "chineseToEnglishName/ViewController.m"
-            timestampString = "469203065.415771"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "161"
-            endingLineNumber = "161"
-            landmarkName = "-loadData"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "chineseToEnglishName/ViewController.m"
-            timestampString = "469203065.415771"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "218"
-            endingLineNumber = "218"
+            startingLineNumber = "235"
+            endingLineNumber = "235"
             landmarkName = "-loadData"
             landmarkType = "5">
             <Locations>
@@ -121,13 +89,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "chineseToEnglishName/ViewController.m"
-            timestampString = "469203065.415771"
+            filePath = "chineseToEnglishName/ResultViewController.m"
+            timestampString = "469272421.407899"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "217"
-            endingLineNumber = "217"
-            landmarkName = "-loadData"
+            startingLineNumber = "80"
+            endingLineNumber = "80"
+            landmarkName = "-searchName"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

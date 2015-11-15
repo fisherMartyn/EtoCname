@@ -25,11 +25,11 @@
 @property (nonatomic,strong) OtherBtn *sound3;
 @property (nonatomic,strong) OtherBtn *shortBtn;
 @property (nonatomic,strong) OtherBtn *longBtn;
-@property (nonatomic,strong) OtherBtn *confirm;
+@property (nonatomic,strong) ConfirmBtn *confirm;
 
-@property (nonatomic) id genderid;
-@property (nonatomic) id soundid;
-@property (nonatomic) id lengthid;
+@property (nonatomic) NSInteger genderid;
+@property (nonatomic) NSInteger soundid;
+@property (nonatomic) NSInteger lengthid;
 
 @end
 
@@ -57,7 +57,7 @@
     
     /* 第一次加载时读入数据 */
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    [userDefaults setObject:@"clear" forKey:@"firstLoad"]; //use to clear data.
+    //[userDefaults setObject:@"clear" forKey:@"firstLoad"]; //use to clear data.
     NSString *firstload  = [[NSUserDefaults standardUserDefaults] objectForKey:@"firstLoad"];
     if (![firstload isEqualToString:@"loaded"]) {
         
@@ -127,8 +127,14 @@
         make.height.mas_equalTo(40);
     }];
     
-    
-    }
+}
+
+-(BOOL) textFieldShouldReturn:(UITextField *)textField
+{
+    return [textField resignFirstResponder];
+}
+
+
 -(void) loadData
 {
     //从文件里读姓
@@ -194,7 +200,7 @@
     
     for (NSString * row in rows) {
         NSArray *fields = [row componentsSeparatedByString:@";"];
-        if (fields.count <8 ) {
+        if (fields.count < 7 ) {
             continue;
         }
         NSString *englishName  = [fields objectAtIndex:0];
@@ -204,17 +210,28 @@
         NSString *sexInfo = [fields objectAtIndex:4];
         NSString *englishFayin = [fields objectAtIndex:5];
         NSString *popularCnt = [fields objectAtIndex:6];
-        NSString *pinyinFayin = [fields objectAtIndex:7];
         
-        EnglishNameInfo *info = [NSEntityDescription insertNewObjectForEntityForName:@"EnglishNameInfo" inManagedObjectContext:appdelegate.managedObjectContext];
-        [info setEnglishName:englishName];
-        [info setEnglishNameCnt:englishNameCnt];
-        [info setChineseName:chineseName];
-        [info setChineseNameCnt:chineseNameCnt];
-        [info setSexInfo:sexInfo];
-        [info setEnglishFayin:englishFayin];
-        [info setPopularCnt:popularCnt];
-        [info setPinyinFayin:pinyinFayin];
+        NSMutableString *pinyinFayin = [[NSMutableString alloc] initWithString:chineseName];
+        
+        CFStringTransform((__bridge CFMutableStringRef)pinyinFayin, 0, kCFStringTransformMandarinLatin, NO);
+        CFStringTransform((__bridge CFMutableStringRef)pinyinFayin, 0, kCFStringTransformStripDiacritics, NO);
+        
+        NSArray *pinyin = [pinyinFayin componentsSeparatedByString:@" "];
+        for (NSString * comppinyin in pinyin) {
+            if (![comppinyin isEqualToString:@""]) {
+                EnglishNameInfo *info = [NSEntityDescription insertNewObjectForEntityForName:@"EnglishNameInfo" inManagedObjectContext:appdelegate.managedObjectContext];
+                [info setEnglishName:englishName];
+                [info setEnglishNameCnt:englishNameCnt];
+                [info setChineseName:chineseName];
+                [info setChineseNameCnt:chineseNameCnt];
+                [info setSexInfo:sexInfo];
+                [info setEnglishFayin:englishFayin];
+                [info setPopularCnt:popularCnt];
+                [info setPinyinFayin:comppinyin];
+                
+            }
+        }
+       
     }
     
     isSaveSuccess = [appdelegate.managedObjectContext save:&error];
@@ -226,18 +243,15 @@
 
 -(void) fetchData //for test
 {
-    /*
     //load data
     
     AppDelegate *appdelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:@"Similar"];
+    NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:@"EnglishNameInfo"];
     NSError *error;
-    request.predicate = predict;
     NSMutableArray *mutableFetchResult = [[appdelegate.managedObjectContext executeFetchRequest:request error:&error] mutableCopy];
-    for (Similar *entry in mutableFetchResult) {
-        NSLog(@"%@ --- %@" ,entry.groupid ,entry.c_name);
+    for (EnglishNameInfo *entry in mutableFetchResult) {
+        NSLog(@"%@ - %@ - %@",entry.englishName,entry.pinyinFayin,entry.chineseName);
     }
-    */
 }
 
 -(void)deleteAllData
@@ -262,7 +276,6 @@
     [appdelegate.managedObjectContext save:&error];
 }
 
-
 -(UITextField*) textView
 {
     if (!_textView) {
@@ -273,6 +286,7 @@
         [_textView setFont:[UIFont boldSystemFontOfSize:25]];
         _textView.textAlignment = NSTextAlignmentCenter;
         _textView.layer.masksToBounds = YES;
+        _textView.delegate = self;
         
     }
     return _textView;
@@ -280,11 +294,42 @@
 
 -(void) GenderSelect:(GenderBtn *)sender
 {
-    [sender setSelected:!sender.isSelected];
-    [self.leftBtn setSelected:NO];
-    [self.middleBtn setSelected:NO];
-    [self.rightBtn setSelected:NO];
+    if (sender.tag == self.genderid) {
+        [sender setSelected:NO];
+        self.genderid = 0;
+    } else {
+        [self.leftBtn setSelected:NO];
+        [self.middleBtn setSelected:NO];
+        [self.rightBtn setSelected:NO];
+        [sender setSelected:YES];
+        self.genderid = sender.tag;
+    }
 }
+-(void) soundSelect:(OtherBtn *)sender
+{
+    if (sender.tag == self.soundid) {
+        [sender setSelected:NO];
+        self.soundid = 0;
+    } else {
+        [self.sound2 setSelected:NO];
+        [self.sound3 setSelected:NO];
+        [sender setSelected:YES];
+        self.soundid = sender.tag;
+    }
+}
+-(void) lengthSelect:(OtherBtn *)sender
+{
+    if (sender.tag == self.lengthid) {
+        [sender setSelected:NO];
+        self.lengthid = 0;
+    } else {
+        [self.shortBtn setSelected:NO];
+        [self.longBtn setSelected:NO];
+        [sender setSelected:YES];
+        self.lengthid = sender.tag;
+    }
+}
+
 -(GenderBtn*) leftBtn
 {
     if (!_leftBtn) {
@@ -325,6 +370,7 @@
         _sound2 = [[OtherBtn alloc] initWithFrame:CGRectZero];
         _sound2.tag = 1;
         [_sound2 setTitle:@"两音" forState:UIControlStateNormal];
+        [_sound2 addTarget:self action:@selector(soundSelect:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _sound2;
 }
@@ -333,6 +379,7 @@
     if (!_sound3) {
         _sound3 = [[OtherBtn alloc] initWithFrame:CGRectZero];
         [_sound3 setTitle:@"三音" forState:UIControlStateNormal];
+        [_sound3 addTarget:self action:@selector(soundSelect:) forControlEvents:UIControlEventTouchUpInside];
         _sound3.tag = 2;
     }
     return _sound3;
@@ -344,6 +391,7 @@
         _shortBtn = [[OtherBtn alloc] initWithFrame:CGRectZero];
         [_shortBtn setTitle:@"短名" forState:UIControlStateNormal];
         _shortBtn.tag = 1;
+        [_shortBtn addTarget:self action:@selector(lengthSelect:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _shortBtn;
 }
@@ -354,13 +402,14 @@
         _longBtn = [[OtherBtn alloc] initWithFrame:CGRectZero];
         [_longBtn setTitle:@"长名" forState:UIControlStateNormal];
         _longBtn.tag = 2;
+        [_longBtn addTarget:self action:@selector(lengthSelect:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _longBtn;
 }
--(OtherBtn *) confirm
+-(ConfirmBtn *) confirm
 {
     if (!_confirm) {
-        _confirm = [[OtherBtn alloc] initWithFrame:CGRectZero];
+        _confirm = [[ConfirmBtn alloc] initWithFrame:CGRectZero];
         [_confirm setTitle:@"取英文名" forState:UIControlStateNormal];
         [_confirm addTarget:self action:@selector(getRsult) forControlEvents:UIControlEventTouchUpInside];
     }
@@ -369,6 +418,10 @@
 -(void)getRsult
 {
     ResultViewController *ctrl = [[ResultViewController alloc] init];
+    ctrl.name = self.textView.text;
+    ctrl.sexid = self.genderid;
+    ctrl.sounid = self.soundid;
+    ctrl.lengthid =self.lengthid;
     [self.navigationController pushViewController:ctrl animated:YES];
 }
 
@@ -418,8 +471,8 @@
     if (self) {
         self.titleLabel.textAlignment = NSTextAlignmentCenter;
         self.titleLabel.font = [UIFont systemFontOfSize:25];
-        self.backgroundColor = [UIColor whiteColor];
-        [self setTitleColor:RGBCOLOR(0x31, 0xa9, 0xff) forState:UIControlStateNormal];
+        self.backgroundColor = RGBCOLOR(0x48, 0xad, 0xd6);
+        [self setTitleColor:RGBCOLOR(0x74, 0xd1, 0xfa) forState:UIControlStateNormal];
         [self setTitleColor:RGBCOLOR(0x70, 0xc7, 0xf0) forState:UIControlStateHighlighted];
         
         self.layer.borderWidth = 1;
@@ -443,14 +496,41 @@
         self.backgroundColor = RGBCOLOR(0x48, 0xad, 0xd6);
     }
 }
--(void)setHighlighted:(BOOL)highlighted
+
+@end
+
+@implementation ConfirmBtn
+-(instancetype) initWithFrame:(CGRect)frame
 {
-    [super setHighlighted:highlighted];
-    if (highlighted) {
-        self.backgroundColor = RGBCOLOR(0x48, 0xad, 0xd6);
-    } else {
-        self.backgroundColor = [UIColor whiteColor];
+    self = [super initWithFrame:frame];
+    if (self) {
+        self.titleLabel.textAlignment = NSTextAlignmentCenter;
+        self.titleLabel.font = [UIFont systemFontOfSize:25];
+        self.backgroundColor = RGBCOLOR(0xd1, 0xeb, 0xf4);
+        [self setTitleColor:RGBCOLOR(0x74, 0xd1, 0xfa) forState:UIControlStateNormal];
+        [self setTitleColor:RGBCOLOR(0x70, 0xc7, 0xf0) forState:UIControlStateHighlighted];
+        
+        self.layer.borderWidth = 1;
+        self.layer.borderColor = RGBCOLOR(0x4a, 0xcb, 0xe5).CGColor;
+        
+        self.clipsToBounds = YES;
     }
+    return self;
 }
+-(void) layoutSubviews
+{
+    [super layoutSubviews];
+    self.layer.cornerRadius = self.frame.size.height/4.0;
+}
+
+ -(void)setHighlighted:(BOOL)highlighted
+ {
+     [super setHighlighted:highlighted];
+     if (highlighted) {
+         self.backgroundColor = RGBCOLOR(0x64, 0xad, 0xd6);
+     } else {
+         self.backgroundColor = RGBCOLOR(0xd1, 0xeb, 0xf4);
+     }
+ }
 
 @end

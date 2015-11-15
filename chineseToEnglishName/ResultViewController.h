@@ -10,8 +10,22 @@
 
 @interface ResultViewController : UIViewController
 
+@property (nonatomic,strong) NSString *name;
+@property (nonatomic) NSInteger sexid;
+@property (nonatomic) NSInteger sounid;
+@property (nonatomic) NSInteger lengthid;
+
 @end
 
 @interface ResultScrollView : UIScrollView
+
+@end
+
+@interface PageView : UIView
+@property (nonatomic,strong) NSString *Name;
+@property (nonatomic,strong) NSString *englishName;
+@property (nonatomic,strong) NSString *englishFayin;
+@property (nonatomic,strong) NSString *chineseFayin;//汉字读音
+@property (nonatomic) int popular;
 
 @end
