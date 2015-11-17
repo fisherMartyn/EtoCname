@@ -43,16 +43,17 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     
-    
-    //set navi bar
     self.view.backgroundColor  = BGCOLOR;
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     self.navigationItem.rightBarButtonItem.tintColor = [UIColor whiteColor];
     UIBarButtonItem * stats = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"stats"] style:UIBarButtonItemStylePlain target:self action:@selector(showStatsAction)];
     self.navigationItem.rightBarButtonItem = stats;
     
+    /*
+    UIBarButtonItem *back = [[UIBarButtonItem alloc] initWithTitle:@"返回" style:UIBarButtonItemStylePlain target:self action:@selector(popback)];
+    self.navigationItem.leftBarButtonItem = back;
+    */
     
     self.scrollview = [[ResultScrollView alloc] initWithFrame:CGRectZero];
     self.scrollview.backgroundColor = [UIColor clearColor];
@@ -68,19 +69,6 @@
         
     }];
     
-    
-    
-    
-        /*
-    [aview mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.scrollview.mas_top).with.offset(40);
-        make.bottom.equalTo(self.scrollview.mas_bottom).with.offset(-40);
-        make.left.equalTo(self.scrollview.mas_left).with.offset(40);
-        make.width.mas_equalTo(50);
-        make.edges.equalTo(self.scrollview);
-    }];
-         */
-
     if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
         self.navigationController.interactivePopGestureRecognizer.enabled = NO;
     }
@@ -93,6 +81,10 @@
         make.bottom.mas_equalTo(ws.view.mas_bottom);
     }];
     
+}
+-(void) popback
+{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 -(UIToolbar*) toolBar {

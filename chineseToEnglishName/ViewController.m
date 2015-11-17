@@ -31,6 +31,7 @@
 @property (nonatomic) NSInteger soundid;
 @property (nonatomic) NSInteger lengthid;
 
+@property (nonatomic,strong) UIActivityIndicatorView * spinner;
 @end
 
 @implementation ViewController
@@ -55,33 +56,38 @@
     [self.view addSubview:self.shortBtn];
     [self.view addSubview:self.longBtn];
     
-    /* 第一次加载时读入数据 */
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    //[userDefaults setObject:@"clear" forKey:@"firstLoad"]; //use to clear data.
-    NSString *firstload  = [[NSUserDefaults standardUserDefaults] objectForKey:@"firstLoad"];
-    if (![firstload isEqualToString:@"loaded"]) {
-        
-        NSLog(@"firstload");
-        //load data to coredata here.
-        [userDefaults setObject:@"loaded" forKey:@"firstLoad"];
-        [[NSUserDefaults standardUserDefaults] synchronize];
-        [self loadData];
-    }
-    
     
     /* 页面布局 */
+    
     WS(ws);
+    /* 输入框 */
     [self.textView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(ws.view.mas_centerX);
-        make.left.equalTo(ws.view.mas_left).with.offset(30);
-        make.right.equalTo(ws.view.mas_right).with.offset(-30);
-        make.top.equalTo(ws.view.mas_top).with.offset(100);
+        make.width.equalTo(ws.view.mas_width).with.offset(-120);
+        make.top.equalTo(ws.view.mas_top).with.offset(80);
         make.height.mas_equalTo(40);
     }];
+    
+    /* 两音三音选择 */
+    [self.sound2 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(ws.view.mas_centerY);
+        make.left.equalTo(ws.view.mas_left).with.offset(40);
+        make.right.equalTo(ws.middleBtn.mas_centerX).with.offset(-20);
+        make.height.mas_equalTo(45);
+    }];
+    [self.sound3 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(ws.sound2.mas_top);
+        make.right.equalTo(ws.view.mas_right).with.offset(-40);
+        make.left.equalTo(ws.middleBtn.mas_centerX).with.offset(20);
+        make.height.mas_equalTo(45);
+        
+    }];
+    
+    /* 性别选择 */
     [self.middleBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(ws.view.mas_centerX);
-        make.top.equalTo(ws.textView.mas_bottom).with.offset(40);
         make.size.mas_equalTo(CGSizeMake(60, 60));
+        make.bottom.equalTo(self.sound2.mas_top).with.offset(-20);
     }];
     [self.leftBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(ws.middleBtn.mas_top);
@@ -93,31 +99,21 @@
         make.size.mas_equalTo(CGSizeMake(60, 60));
         make.left.mas_equalTo(ws.middleBtn.mas_right).with.offset(40);
     }];
-    [self.sound2 mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(ws.middleBtn.mas_bottom).with.offset(40);
-        make.left.equalTo(ws.view.mas_left).with.offset(40);
-        make.right.equalTo(ws.middleBtn.mas_centerX).with.offset(-20);
-        make.height.mas_equalTo(40);
-    }];
-    [self.sound3 mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(ws.middleBtn.mas_bottom).with.offset(40);
-        make.right.equalTo(ws.view.mas_right).with.offset(-40);
-        make.left.equalTo(ws.middleBtn.mas_centerX).with.offset(20);
-        make.height.mas_equalTo(40);
-        
-    }];
     
+    
+    
+    /* 名字选择 */
     [self.shortBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(ws.sound2.mas_bottom).with.offset(40);
+        make.top.equalTo(self.sound2.mas_bottom).with.offset(30);
         make.left.equalTo(ws.view.mas_left).with.offset(40);
         make.right.equalTo(ws.middleBtn.mas_centerX).with.offset(-20);
-        make.height.mas_equalTo(40);
+        make.height.mas_equalTo(45);
     }];
     [self.longBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(ws.sound2.mas_bottom).with.offset(40);
+        make.top.equalTo(ws.shortBtn.mas_top);
         make.right.equalTo(ws.view.mas_right).with.offset(-40);
         make.left.equalTo(ws.middleBtn.mas_centerX).with.offset(20);
-        make.height.mas_equalTo(40);
+        make.height.mas_equalTo(45);
     }];
     
     [self.confirm mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -127,7 +123,42 @@
         make.height.mas_equalTo(40);
     }];
     
+    
+    
+    
 }
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    //[userDefaults setObject:@"clear" forKey:@"firstLoad"]; //use to clear data.
+    NSString *firstload  = [[NSUserDefaults standardUserDefaults] objectForKey:@"firstLoad"];
+    if (![firstload isEqualToString:@"loaded"]) {
+        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        hud.mode = MBProgressHUDModeIndeterminate;
+        hud.labelText = @"首次打开，加载中";
+        
+        
+        dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
+            
+            /* 第一次加载时读入数据 */
+            [userDefaults setObject:@"loaded" forKey:@"firstLoad"];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+            
+            [self loadData];
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [hud hide:YES];
+            });
+        });
+        
+    }
+    
+}
+
+
 
 -(BOOL) textFieldShouldReturn:(UITextField *)textField
 {
@@ -442,7 +473,7 @@
     if (self) {
         self.clipsToBounds = YES;
         self.titleLabel.textAlignment = NSTextAlignmentCenter;
-        self.titleLabel.font = [UIFont systemFontOfSize:20];
+        self.titleLabel.font = [UIFont systemFontOfSize:23];
         [self setTitleColor:RGBCOLOR(0x31, 0xa9, 0xff) forState:UIControlStateSelected];
         [self setTitleColor:RGBCOLOR(0x67, 0xca, 0xf2) forState:UIControlStateNormal];
         [self setSelected:NO];
@@ -472,12 +503,12 @@
     self = [super initWithFrame:frame];
     if (self) {
         self.titleLabel.textAlignment = NSTextAlignmentCenter;
-        self.titleLabel.font = [UIFont systemFontOfSize:25];
+        self.titleLabel.font = [UIFont systemFontOfSize:20];
         self.backgroundColor = RGBCOLOR(0x48, 0xad, 0xd6);
         [self setTitleColor:RGBCOLOR(0x74, 0xd1, 0xfa) forState:UIControlStateNormal];
         [self setTitleColor:RGBCOLOR(0x70, 0xc7, 0xf0) forState:UIControlStateHighlighted];
         
-        self.layer.borderWidth = 1;
+        self.layer.borderWidth = 2;
         self.layer.borderColor = RGBCOLOR(0x4a, 0xcb, 0xe5).CGColor;
         
         self.clipsToBounds = YES;
