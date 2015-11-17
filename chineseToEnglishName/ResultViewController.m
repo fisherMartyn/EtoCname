@@ -33,6 +33,10 @@
 //排序后用于显示的数组
 @property (nonatomic,strong) NSMutableArray *shownArr;
 
+@property (nonatomic,strong) ResultScrollView *scrollview;
+
+@property (nonatomic,strong) UIToolbar *toolBar;
+@property (nonatomic,strong) UIBarButtonItem *barItem;
 @end
 
 @implementation ResultViewController
@@ -50,18 +54,83 @@
     self.navigationItem.rightBarButtonItem = stats;
     
     
-    ResultScrollView *scrollView = [[ResultScrollView alloc] initWithFrame:CGRectZero];
-    scrollView.backgroundColor = [UIColor greenColor];
+    self.scrollview = [[ResultScrollView alloc] initWithFrame:CGRectZero];
+    self.scrollview.backgroundColor = [UIColor clearColor];
     
     
-    [self.view addSubview:scrollView];
-    [scrollView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.view.mas_left);
-        make.right.equalTo(self.view.mas_right);
-        make.top.equalTo(self.view.mas_top).with.offset(70);
-        make.bottom.equalTo(self.view.mas_bottom).with.offset(-50);
+    WS(ws);
+    [self.view addSubview:self.scrollview];
+    [self.scrollview mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(ws.view.mas_left);
+        make.right.equalTo(ws.view.mas_right);
+        make.top.equalTo(ws.view.mas_top).with.offset(70);
+        make.bottom.equalTo(ws.view.mas_bottom).with.offset(-50);
+        
     }];
+    
+    
+    
+    
+        /*
+    [aview mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.scrollview.mas_top).with.offset(40);
+        make.bottom.equalTo(self.scrollview.mas_bottom).with.offset(-40);
+        make.left.equalTo(self.scrollview.mas_left).with.offset(40);
+        make.width.mas_equalTo(50);
+        make.edges.equalTo(self.scrollview);
+    }];
+         */
 
+    if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
+        self.navigationController.interactivePopGestureRecognizer.enabled = NO;
+    }
+    
+    [self.view addSubview:self.toolBar];
+    [self.toolBar mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(ws.view.mas_centerX);
+        make.width.equalTo(ws.view.mas_width);
+        make.height.mas_equalTo(50);
+        make.bottom.mas_equalTo(ws.view.mas_bottom);
+    }];
+    
+}
+
+-(UIToolbar*) toolBar {
+    if (!_toolBar) {
+        _toolBar = [[UIToolbar alloc] initWithFrame:CGRectZero];
+        [_toolBar setBackgroundImage:[[UIImage alloc] init] forToolbarPosition:UIToolbarPositionAny barMetrics:UIBarMetricsDefault];
+        _toolBar.clipsToBounds = YES;
+        //颜色：渲染toolbar
+        _toolBar.tintColor =  [UIColor whiteColor];
+        
+        UIBarButtonItem *flexibleSpace =  [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+        _toolBar.items = @[flexibleSpace,self.barItem,flexibleSpace];
+    }
+    return _toolBar;
+}
+
+-(UIBarButtonItem *)barItem {
+    if (!_barItem) {
+        _barItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(shareAction)];
+    }
+    return _barItem;
+}
+-(void) shareAction {
+    /*
+    NSArray *arr = [NSArray arrayWithObjects:[self screenShot], nil];
+    UIActivityViewController* vc = [[UIActivityViewController alloc]
+                                    initWithActivityItems:arr applicationActivities:nil];
+    vc.excludedActivityTypes = @[UIActivityTypeAssignToContact];
+    
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
+        [self presentViewController:vc animated:YES completion:nil];
+    }
+    else {
+        UIPopoverController *popup = [[UIPopoverController alloc] initWithContentViewController:vc];
+        // [popup presentPopoverFromRect:CGRectMake(50, self.view.frame.size.height-40, 0, 0)inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+        [popup presentPopoverFromBarButtonItem:self.barItem permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+    }
+     */
 }
 
 -(void) viewWillAppear:(BOOL)animated
@@ -75,6 +144,29 @@
     self.shownArr = [NSMutableArray array];
     [self searchName];
     [self orderNames];
+    /*
+    for (EnglishNameInfo * info in self.shownArr) {
+        
+    }
+     */
+    NSString *xing;
+    
+    if (self.xings.count) {
+        xing = [self.xings objectAtIndex:(arc4random()%self.xings.count)];
+    } else {
+        xing = @"";
+    }
+    
+    
+    NSInteger count = self.shownArr.count;
+    self.scrollview.contentSize =CGSizeMake(self.view.frame.size.width*count, self.view.frame.size.height-120-64);
+    
+    for (int i=0; i<count; ++i) {
+        EnglishNameInfo *info = [self.shownArr objectAtIndex:i];
+        PageView *page = [[PageView alloc] initWithFrame:CGRectMake(i*self.view.frame.size.width + 40, 0, self.view.frame.size.width-80, self.scrollview.contentSize.height -10) and:self.name andEnglish:[NSString stringWithFormat:@"%@ %@",info.englishName,xing] andEFayin:info.englishFayin andCFayin:info.chineseName andPopular:info.popularCnt.intValue];
+        [self.scrollview addSubview:page];
+    }
+    
 }
 
 -(void) searchName
@@ -365,6 +457,9 @@
         if (count >29 ) {
             break;
         }
+        if (inter.count == 0 && first.count == 0 && last.count == 0 && popular.count == 0 ) {
+            break;
+        }
     }
     self.shownArr = result;
 }
@@ -399,17 +494,12 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        self.showsHorizontalScrollIndicator = YES;
+        self.showsHorizontalScrollIndicator = NO;
         self.showsVerticalScrollIndicator = NO;
         self.pagingEnabled = YES;
+        self.bounces = NO;
     }
     return self;
-}
-
--(void)layoutSubviews
-{
-    [super layoutSubviews];
-    self.contentSize = CGSizeMake(self.frame.size.width*10, self.frame.size.height);
 }
 
 @end
@@ -417,21 +507,147 @@
 @interface PageView()
 @property (nonatomic,strong) UILabel *nameLabel;
 @property (nonatomic,strong) UILabel *englishNameLabel;
-@property (nonatomic,strong) UILabel *cFayinLabel;
 @property (nonatomic,strong) UILabel *eFayinLabel;
-@property (nonatomic,strong) UIView *popularView;
+@property (nonatomic,strong) UILabel *cFayinLabel;
+@property (nonatomic,strong) UIView *popularLabel;
+@property (nonatomic,strong) UILabel *textLabel;
+@property (nonatomic,strong) NSMutableArray *stars;
 
 @end
 @implementation PageView
-
--(instancetype) initWithFrame:(CGRect)frame
+-(instancetype) initWithFrame:(CGRect)frame and:(NSString *)name andEnglish:(NSString *)englishName andEFayin:(NSString *)englishFayin andCFayin:(NSString *)chineseFayin andPopular:(int)popular
 {
     self = [super initWithFrame:frame];
     if (self) {
         self.backgroundColor = RGBCOLOR(0xd9, 0xee, 0xf6);
+        
+        self.clipsToBounds = YES;
+        self.layer.cornerRadius = 10;
+        
         self.nameLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+        self.nameLabel.text = name;
+        self.nameLabel.textAlignment =NSTextAlignmentCenter;
+        self.nameLabel.textColor = RGBCOLOR(0x4a, 0xb3, 0xfd);
+        self.nameLabel.font = [UIFont systemFontOfSize:38];
+        self.nameLabel.backgroundColor = RGBCOLOR(0xe3, 0xf2, 0xf8);
+        self.nameLabel.clipsToBounds = YES;
+        self.nameLabel.layer.cornerRadius = 8;
+        [self addSubview:self.nameLabel];
+        WS(ws);
+        [self.nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(ws.mas_top).with.offset(60);
+            make.width.equalTo(ws.mas_width).with.offset(-80);
+            make.height.equalTo(@45);
+            make.centerX.equalTo(ws.mas_centerX);
+        }];
+        
+        self.englishNameLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+        self.englishNameLabel.text = englishName;
+        self.englishNameLabel.textAlignment = NSTextAlignmentCenter;
+        self.englishNameLabel.textColor = self.nameLabel.textColor;
+        self.englishNameLabel.font = self.nameLabel.font;
+        self.englishNameLabel.backgroundColor = self.nameLabel.backgroundColor;
+        self.englishNameLabel.layer.cornerRadius = 8;
+        self.englishNameLabel.clipsToBounds = YES;
+        [self addSubview:self.englishNameLabel];
+        [self.englishNameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(ws.nameLabel.mas_bottom).with.offset(20);
+            make.width.equalTo(ws.nameLabel.mas_width).with.offset(-20);
+            make.height.equalTo(@45);
+            make.centerX.equalTo(ws.mas_centerX);
+        }];
+        
+        
+        self.eFayinLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+        self.eFayinLabel.text = englishFayin;
+        self.eFayinLabel.textAlignment = NSTextAlignmentCenter;
+        self.eFayinLabel.textColor = self.nameLabel.textColor;
+        self.eFayinLabel.font = self.nameLabel.font;
+        self.eFayinLabel.backgroundColor = self.nameLabel.backgroundColor;
+        self.eFayinLabel.layer.cornerRadius = 8;
+        self.eFayinLabel.clipsToBounds = YES;
+        [self addSubview:self.eFayinLabel];
+        [self.eFayinLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(ws.englishNameLabel.mas_bottom).with.offset(20);
+            make.width.equalTo(ws.englishNameLabel.mas_width);
+            make.height.mas_equalTo(45);
+            make.centerX.equalTo(ws.mas_centerX);
+        }];
+        
+        self.cFayinLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+        self.cFayinLabel.text = chineseFayin;
+        self.cFayinLabel.textAlignment = NSTextAlignmentCenter;
+        self.cFayinLabel.textColor  = self.nameLabel.textColor;
+        self.cFayinLabel.font = self.nameLabel.font;
+        self.cFayinLabel.backgroundColor = self.nameLabel.backgroundColor;
+        self.cFayinLabel.layer.cornerRadius = 8;
+        self.cFayinLabel.clipsToBounds = YES;
+        [self addSubview:self.cFayinLabel];
+        [self.cFayinLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(ws.eFayinLabel.mas_bottom).with.offset(20);
+            make.width.equalTo(self.eFayinLabel.mas_width);
+            make.height.mas_equalTo(40);
+            make.centerX.equalTo(ws.mas_centerX);
+        }];
+        
+        self.popularLabel = [[UIView alloc] initWithFrame:CGRectZero];
+        [self addSubview:self.popularLabel];
+        [self.popularLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(ws.cFayinLabel.mas_bottom).with.offset(20);
+            make.width.equalTo(ws.mas_width).with.offset(-20);
+            make.height.mas_equalTo(40);
+            make.centerX.equalTo(ws.mas_centerX);
+        }];
+        
+        self.textLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+        self.textLabel.text = @"流行：";
+        self.textLabel.textAlignment = NSTextAlignmentRight;
+        self.textLabel.backgroundColor = [UIColor clearColor];
+        self.textLabel.textColor = self.nameLabel.textColor;
+        self.textLabel.font = [UIFont systemFontOfSize:20];
+        self.textLabel.layer.cornerRadius = 8;
+        self.textLabel.clipsToBounds = YES;
+        [self addSubview:self.textLabel];
+        [self.textLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(ws.popularLabel.mas_top);
+            make.right.equalTo(ws.mas_centerX).with.offset(-20);
+            make.height.mas_equalTo(40);
+            make.width.equalTo(@80);
+        }];
+    
+        self.stars = [NSMutableArray array];
+        for (int i =0 ; i< popular; i++) {
+            UIImageView *v = [[UIImageView alloc] initWithFrame:CGRectZero];
+            v.contentMode = UIViewContentModeScaleToFill;
+            v.image = [UIImage imageNamed:@"star.png"];
+            [self addSubview:v];
+            [self.stars addObject:v];
+        }
+        
+        UIImageView *v  = [self.stars objectAtIndex:0];
+        [v mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(ws.textLabel.mas_right);
+            make.height.equalTo(@25);
+            make.width.equalTo(@25);
+            make.centerY.equalTo(ws.textLabel.mas_centerY);
+        }];
+        
+        for (int i =1 ; i<popular; i++) {
+            
+            UIImageView *v  = [self.stars objectAtIndex:i];
+            UIImageView *pre = [self.stars objectAtIndex:i-1];
+            [v mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.left.equalTo(pre.mas_right);
+                make.top.equalTo(pre.mas_top);
+                make.height.equalTo(pre.mas_height);
+                make.width.equalTo(pre.mas_width);
+            }];
+        }
+        
+        
     }
     return self;
+    
 }
 
 @end

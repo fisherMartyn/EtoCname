@@ -27,6 +27,7 @@
 		A85CC61F1BF7548A0052080F /* Similar.m in Sources */ = {isa = PBXBuildFile; fileRef = A85CC6191BF7548A0052080F /* Similar.m */; };
 		A85CC6251BF75F480052080F /* EnglishNameInfo+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = A85CC6221BF75F480052080F /* EnglishNameInfo+CoreDataProperties.m */; };
 		A85CC6261BF75F480052080F /* EnglishNameInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = A85CC6241BF75F480052080F /* EnglishNameInfo.m */; };
+		A85CC6541BFA29660052080F /* star.png in Resources */ = {isa = PBXBuildFile; fileRef = A85CC6531BFA29660052080F /* star.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -63,6 +64,7 @@
 		A85CC6221BF75F480052080F /* EnglishNameInfo+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "EnglishNameInfo+CoreDataProperties.m"; sourceTree = "<group>"; };
 		A85CC6231BF75F480052080F /* EnglishNameInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnglishNameInfo.h; sourceTree = "<group>"; };
 		A85CC6241BF75F480052080F /* EnglishNameInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnglishNameInfo.m; sourceTree = "<group>"; };
+		A85CC6531BFA29660052080F /* star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = star.png; sourceTree = "<group>"; };
 		D02996C1B54D7F70EC498B50 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		EAD913DC13CA434B74259540 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -160,6 +162,7 @@
 		A85CC5EC1BF728CC0052080F /* images */ = {
 			isa = PBXGroup;
 			children = (
+				A85CC6531BFA29660052080F /* star.png */,
 				A85CC5EA1BF728C60052080F /* stats.png */,
 			);
 			name = images;
@@ -249,6 +252,7 @@
 				A85CC59F1BF645580052080F /* LaunchScreen.storyboard in Resources */,
 				A85CC5F31BF73C620052080F /* Similar.txt in Resources */,
 				A85CC59C1BF645580052080F /* Assets.xcassets in Resources */,
+				A85CC6541BFA29660052080F /* star.png in Resources */,
 				A85CC5971BF645580052080F /* Main.storyboard in Resources */,
 				A85CC5EB1BF728C60052080F /* stats.png in Resources */,
 			);

@@ -422,7 +422,9 @@
     ctrl.sexid = self.genderid;
     ctrl.sounid = self.soundid;
     ctrl.lengthid =self.lengthid;
-    [self.navigationController pushViewController:ctrl animated:YES];
+    if (![ctrl.name isEqualToString:@""]) {
+        [self.navigationController pushViewController:ctrl animated:YES];
+    }
 }
 
 - (void)didReceiveMemoryWarning {

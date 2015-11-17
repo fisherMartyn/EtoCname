@@ -22,10 +22,7 @@
 @end
 
 @interface PageView : UIView
-@property (nonatomic,strong) NSString *Name;
-@property (nonatomic,strong) NSString *englishName;
-@property (nonatomic,strong) NSString *englishFayin;
-@property (nonatomic,strong) NSString *chineseFayin;//汉字读音
-@property (nonatomic) int popular;
+
+-(instancetype) initWithFrame:(CGRect)frame and:(NSString *)name andEnglish:(NSString *)englishName andEFayin:(NSString *)englishFayin andCFayin:(NSString *)chineseFayin andPopular:(int)popular;
 
 @end
