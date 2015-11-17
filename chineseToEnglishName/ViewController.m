@@ -455,6 +455,8 @@
     ctrl.lengthid =self.lengthid;
     if (![ctrl.name isEqualToString:@""]) {
         [self.navigationController pushViewController:ctrl animated:YES];
+    } else {
+        [self.view makeToast:@"姓名不得为空" duration:1.0 position:CSToastPositionCenter];
     }
 }
 

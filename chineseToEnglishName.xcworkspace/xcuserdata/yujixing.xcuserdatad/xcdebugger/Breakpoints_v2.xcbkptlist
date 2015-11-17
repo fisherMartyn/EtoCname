@@ -90,11 +90,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "chineseToEnglishName/ResultViewController.m"
-            timestampString = "469459116.781589"
+            timestampString = "469464915.263724"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "167"
-            endingLineNumber = "167"
+            startingLineNumber = "180"
+            endingLineNumber = "180"
             landmarkName = "-searchName"
             landmarkType = "5">
          </BreakpointContent>
