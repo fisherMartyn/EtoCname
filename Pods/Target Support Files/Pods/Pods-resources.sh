@@ -57,6 +57,20 @@ install_resource()
       ;;
   esac
 }
+if [[ "$CONFIGURATION" == "Debug" ]]; then
+  install_resource "ShareSDK2/ShareSDK/Core/Resource.bundle"
+  install_resource "ShareSDK2/ShareSDK/Core/zh-Hans.lproj/ShareSDKLocalizable.strings"
+  install_resource "ShareSDK2/ShareSDK/Extend/SinaWeiboSDK/WeiboSDK.bundle"
+  install_resource "ShareSDK2/ShareSDK/UI/ShareSDKiPadSimpleShareViewUI.bundle"
+  install_resource "ShareSDK2/ShareSDK/UI/ShareSDKiPhoneSimpleShareViewUI.bundle"
+fi
+if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_resource "ShareSDK2/ShareSDK/Core/Resource.bundle"
+  install_resource "ShareSDK2/ShareSDK/Core/zh-Hans.lproj/ShareSDKLocalizable.strings"
+  install_resource "ShareSDK2/ShareSDK/Extend/SinaWeiboSDK/WeiboSDK.bundle"
+  install_resource "ShareSDK2/ShareSDK/UI/ShareSDKiPadSimpleShareViewUI.bundle"
+  install_resource "ShareSDK2/ShareSDK/UI/ShareSDKiPhoneSimpleShareViewUI.bundle"
+fi
 
 mkdir -p "${CONFIGURATION_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}"
 rsync -avr --copy-links --no-relative --exclude '*/.svn/*' --files-from="$RESOURCES_TO_COPY" / "${CONFIGURATION_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}"
