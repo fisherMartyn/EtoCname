@@ -2,8 +2,91 @@ pod "Masonry"
 pod 'MBProgressHUD', '~> 0.9.1'
 pod 'Toast'
 
-pod 'ShareSDK2'
-pod 'ShareSDK2/UI/iPadSimple'
-pod 'ShareSDK2/UI/iPhoneSimple'
-pod 'ShareSDK2/Connection/SinaWeibo'
-pod 'ShareSDK2/Connection/WeChat'
+ # 主模块(必须)
+ pod 'ShareSDK2'
+ 
+ # UI模块(含所有UI样式,可选)
+ pod 'ShareSDK2/UI'
+ # iOS竖版默认分享UI(可选)
+ pod 'ShareSDK2/UI/Flat'
+ # iPad版默认分享视图(可选)
+ pod 'ShareSDK2/UI/iPadDefault'
+ # iPad版简单分享视图(可选)
+ pod 'ShareSDK2/UI/iPadSimple'
+ # iPhone版默认分享视图(可选)
+ pod 'ShareSDK2/UI/iPhoneDefault'
+ # iPhone版简单分享视图(可选)
+ pod 'ShareSDK2/UI/iPhoneSimple'
+ # iPhone版应用推荐视图(可选)
+ pod 'ShareSDK2/UI/iPhoneAppRecommend'
+ 
+ # 评论和赞模块(可选)
+ pod 'ShareSDK2/Comment'
+ 
+ # 分享&登录链接模块(含所有平台,可选)
+ pod 'ShareSDK2/Connection'
+ # 短信(可选)
+ pod 'ShareSDK2/Connection/SMS'
+ # 邮件(可选)
+ pod 'ShareSDK2/Connection/Mail'
+ # 拷贝(可选)
+ pod 'ShareSDK2/Connection/Copy'
+ # 打印(可选)
+ pod 'ShareSDK2/Connection/Print'
+ # 新浪微博(可选)
+ pod 'ShareSDK2/Connection/SinaWeibo'
+ # 微信(可选)
+ pod 'ShareSDK2/Connection/WeChat'
+ # 腾讯QQ(可选)
+ pod 'ShareSDK2/Connection/QQ'
+ # QQ空间(可选)
+ pod 'ShareSDK2/Connection/QZone'
+ # 腾讯微博(可选)
+ pod 'ShareSDK2/Connection/TencentWeibo'
+ # Google+(可选)
+ pod 'ShareSDK2/Connection/GooglePlus'
+ # 人人网(可选)
+ pod 'ShareSDK2/Connection/RenRen'
+ # 易信(可选)
+ pod 'ShareSDK2/Connection/YiXin'
+ # Facebook(可选)
+ pod 'ShareSDK2/Connection/Facebook'
+ # Dropbox(可选)
+ pod 'ShareSDK2/Connection/Dropbox'
+ # DouBan(可选)
+ pod 'ShareSDK2/Connection/DouBan'
+ # 印象笔记(可选)
+ pod 'ShareSDK2/Connection/EverNote'
+ # Flickr(可选)
+ pod 'ShareSDK2/Connection/Flickr'
+ # Instagram(可选)
+ pod 'ShareSDK2/Connection/Instagram'
+ # Instapaper(可选)
+ pod 'ShareSDK2/Connection/Instapaper'
+ # 开心网(可选)
+ pod 'ShareSDK2/Connection/KaiXin'
+ # Twitter(可选)
+ pod 'ShareSDK2/Connection/Twitter'
+ # Tumblr(可选)
+ pod 'ShareSDK2/Connection/Tumblr'
+ # WhatsApp(可选)
+ pod 'ShareSDK2/Connection/WhatsApp'
+ # VKontakte(可选)
+ pod 'ShareSDK2/Connection/VKontakte'
+ # KaKaoStory(可选)
+ pod 'ShareSDK2/Connection/KaKaoStory'
+ # KaKaoTalk(可选)
+ pod 'ShareSDK2/Connection/KaKaoTalk'
+ # Line(可选)
+ pod 'ShareSDK2/Connection/Line'
+ # LinkedIn(可选)
+ pod 'ShareSDK2/Connection/LinkedIn'
+ # Pocket(可选)
+ pod 'ShareSDK2/Connection/Pocket'
+ # 明道(可选)
+ pod 'ShareSDK2/Connection/MingDao'
+ # 有道云笔记(可选)
+ pod 'ShareSDK2/Connection/YouDaoNote'
+ # 支付宝(可选)
+ pod 'ShareSDK2/Connection/AliPaySocial'
+

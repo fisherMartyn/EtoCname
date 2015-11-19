@@ -1,0 +1,1 @@
+../../../../ShareSDK2/ShareSDK/Connection/GooglePlusConnection.framework/Headers/SSGooglePlusCredential.h

@@ -1,0 +1,1 @@
+../../../../ShareSDK2/ShareSDK/Extend/RenRenSDK/RennSDK.framework/Headers/RennLoginService.h

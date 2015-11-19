@@ -1,0 +1,1 @@
+../../../../ShareSDK2/ShareSDK/Connection/RenRenConnection.framework/Headers/SSRenRenUser.h

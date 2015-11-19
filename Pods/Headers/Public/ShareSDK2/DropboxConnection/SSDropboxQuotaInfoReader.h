@@ -1,0 +1,1 @@
+../../../../ShareSDK2/ShareSDK/Connection/DropboxConnection.framework/Headers/SSDropboxQuotaInfoReader.h

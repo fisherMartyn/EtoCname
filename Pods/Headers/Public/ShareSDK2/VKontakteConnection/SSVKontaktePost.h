@@ -1,0 +1,1 @@
+../../../../ShareSDK2/ShareSDK/Connection/VKontakteConnection.framework/Headers/SSVKontaktePost.h

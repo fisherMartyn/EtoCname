@@ -1,0 +1,1 @@
+../../../ShareSDK2/ShareSDK/Extend/YiXinSDK/YXApi.h

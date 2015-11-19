@@ -1,0 +1,1 @@
+../../../../ShareSDK2/ShareSDK/Connection/DouBanConnection.framework/Headers/SSDouBanFlashReader.h

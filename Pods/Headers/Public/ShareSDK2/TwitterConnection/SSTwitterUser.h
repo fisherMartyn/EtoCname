@@ -1,0 +1,1 @@
+../../../../ShareSDK2/ShareSDK/Connection/TwitterConnection.framework/Headers/SSTwitterUser.h

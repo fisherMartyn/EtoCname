@@ -1,0 +1,1 @@
+../../../../ShareSDK2/ShareSDK/Connection/KaKaoTalkConnection.framework/Headers/SSKakaoTalkErrorInfo.h

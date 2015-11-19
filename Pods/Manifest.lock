@@ -1,33 +1,160 @@
 PODS:
-  - Masonry (0.6.1)
+  - Masonry (0.6.3)
   - MBProgressHUD (0.9.1)
   - ShareSDK2 (2.12.1):
     - ShareSDK2/Core (= 2.12.1)
+  - ShareSDK2/Comment (2.12.1)
+  - ShareSDK2/Connection (2.12.1):
+    - ShareSDK2/Connection/AliPaySocial (= 2.12.1)
+    - ShareSDK2/Connection/Copy (= 2.12.1)
+    - ShareSDK2/Connection/DouBan (= 2.12.1)
+    - ShareSDK2/Connection/Dropbox (= 2.12.1)
+    - ShareSDK2/Connection/EverNote (= 2.12.1)
+    - ShareSDK2/Connection/Facebook (= 2.12.1)
+    - ShareSDK2/Connection/Flickr (= 2.12.1)
+    - ShareSDK2/Connection/GooglePlus (= 2.12.1)
+    - ShareSDK2/Connection/Instagram (= 2.12.1)
+    - ShareSDK2/Connection/Instapaper (= 2.12.1)
+    - ShareSDK2/Connection/KaiXin (= 2.12.1)
+    - ShareSDK2/Connection/KaKaoStory (= 2.12.1)
+    - ShareSDK2/Connection/KaKaoTalk (= 2.12.1)
+    - ShareSDK2/Connection/Line (= 2.12.1)
+    - ShareSDK2/Connection/LinkedIn (= 2.12.1)
+    - ShareSDK2/Connection/Mail (= 2.12.1)
+    - ShareSDK2/Connection/MingDao (= 2.12.1)
+    - ShareSDK2/Connection/Pinterest (= 2.12.1)
+    - ShareSDK2/Connection/Pocket (= 2.12.1)
+    - ShareSDK2/Connection/Print (= 2.12.1)
+    - ShareSDK2/Connection/QQ (= 2.12.1)
+    - ShareSDK2/Connection/QZone (= 2.12.1)
+    - ShareSDK2/Connection/RenRen (= 2.12.1)
+    - ShareSDK2/Connection/SinaWeibo (= 2.12.1)
+    - ShareSDK2/Connection/SMS (= 2.12.1)
+    - ShareSDK2/Connection/TencentWeibo (= 2.12.1)
+    - ShareSDK2/Connection/Tumblr (= 2.12.1)
+    - ShareSDK2/Connection/Twitter (= 2.12.1)
+    - ShareSDK2/Connection/VKontakte (= 2.12.1)
+    - ShareSDK2/Connection/WeChat (= 2.12.1)
+    - ShareSDK2/Connection/WhatsApp (= 2.12.1)
+    - ShareSDK2/Connection/YiXin (= 2.12.1)
+    - ShareSDK2/Connection/YouDaoNote (= 2.12.1)
+  - ShareSDK2/Connection/AliPaySocial (2.12.1):
+    - ShareSDK2/Extend/APSocialSDK
+  - ShareSDK2/Connection/Copy (2.12.1)
+  - ShareSDK2/Connection/DouBan (2.12.1)
+  - ShareSDK2/Connection/Dropbox (2.12.1)
+  - ShareSDK2/Connection/EverNote (2.12.1)
+  - ShareSDK2/Connection/Facebook (2.12.1)
+  - ShareSDK2/Connection/Flickr (2.12.1)
+  - ShareSDK2/Connection/GooglePlus (2.12.1):
+    - ShareSDK2/Extend/GooglePlusSDK
+  - ShareSDK2/Connection/Instagram (2.12.1)
+  - ShareSDK2/Connection/Instapaper (2.12.1)
+  - ShareSDK2/Connection/KaiXin (2.12.1)
+  - ShareSDK2/Connection/KaKaoStory (2.12.1)
+  - ShareSDK2/Connection/KaKaoTalk (2.12.1)
+  - ShareSDK2/Connection/Line (2.12.1)
+  - ShareSDK2/Connection/LinkedIn (2.12.1)
+  - ShareSDK2/Connection/Mail (2.12.1)
+  - ShareSDK2/Connection/MingDao (2.12.1)
+  - ShareSDK2/Connection/Pinterest (2.12.1):
+    - ShareSDK2/Extend/Pinterest.embeddedframework
+  - ShareSDK2/Connection/Pocket (2.12.1)
+  - ShareSDK2/Connection/Print (2.12.1)
+  - ShareSDK2/Connection/QQ (2.12.1):
+    - ShareSDK2/Extend/QQConnectSDK
+  - ShareSDK2/Connection/QZone (2.12.1):
+    - ShareSDK2/Extend/QQConnectSDK
+  - ShareSDK2/Connection/RenRen (2.12.1):
+    - ShareSDK2/Extend/RenRenSDK
   - ShareSDK2/Connection/SinaWeibo (2.12.1):
     - ShareSDK2/Extend/SinaWeiboSDK
+  - ShareSDK2/Connection/SMS (2.12.1)
+  - ShareSDK2/Connection/TencentWeibo (2.12.1)
+  - ShareSDK2/Connection/Tumblr (2.12.1)
+  - ShareSDK2/Connection/Twitter (2.12.1)
+  - ShareSDK2/Connection/VKontakte (2.12.1)
   - ShareSDK2/Connection/WeChat (2.12.1):
     - ShareSDK2/Extend/WeChatSDK
+  - ShareSDK2/Connection/WhatsApp (2.12.1)
+  - ShareSDK2/Connection/YiXin (2.12.1):
+    - ShareSDK2/Extend/YiXinSDK
+  - ShareSDK2/Connection/YouDaoNote (2.12.1)
   - ShareSDK2/Core (2.12.1)
+  - ShareSDK2/Extend/APSocialSDK (2.12.1)
+  - ShareSDK2/Extend/GooglePlusSDK (2.12.1)
+  - ShareSDK2/Extend/Pinterest.embeddedframework (2.12.1)
+  - ShareSDK2/Extend/QQConnectSDK (2.12.1)
+  - ShareSDK2/Extend/RenRenSDK (2.12.1)
   - ShareSDK2/Extend/SinaWeiboSDK (2.12.1)
   - ShareSDK2/Extend/WeChatSDK (2.12.1)
+  - ShareSDK2/Extend/YiXinSDK (2.12.1)
+  - ShareSDK2/UI (2.12.1):
+    - ShareSDK2/UI/Flat (= 2.12.1)
+    - ShareSDK2/UI/iPadDefault (= 2.12.1)
+    - ShareSDK2/UI/iPadSimple (= 2.12.1)
+    - ShareSDK2/UI/iPhoneAppRecommend (= 2.12.1)
+    - ShareSDK2/UI/iPhoneDefault (= 2.12.1)
+    - ShareSDK2/UI/iPhoneSimple (= 2.12.1)
+  - ShareSDK2/UI/Flat (2.12.1)
+  - ShareSDK2/UI/iPadDefault (2.12.1)
   - ShareSDK2/UI/iPadSimple (2.12.1)
+  - ShareSDK2/UI/iPhoneAppRecommend (2.12.1)
+  - ShareSDK2/UI/iPhoneDefault (2.12.1)
   - ShareSDK2/UI/iPhoneSimple (2.12.1)
-  - Toast (2.4)
+  - Toast (3.0)
 
 DEPENDENCIES:
   - Masonry
   - MBProgressHUD (~> 0.9.1)
   - ShareSDK2
+  - ShareSDK2/Comment
+  - ShareSDK2/Connection
+  - ShareSDK2/Connection/AliPaySocial
+  - ShareSDK2/Connection/Copy
+  - ShareSDK2/Connection/DouBan
+  - ShareSDK2/Connection/Dropbox
+  - ShareSDK2/Connection/EverNote
+  - ShareSDK2/Connection/Facebook
+  - ShareSDK2/Connection/Flickr
+  - ShareSDK2/Connection/GooglePlus
+  - ShareSDK2/Connection/Instagram
+  - ShareSDK2/Connection/Instapaper
+  - ShareSDK2/Connection/KaiXin
+  - ShareSDK2/Connection/KaKaoStory
+  - ShareSDK2/Connection/KaKaoTalk
+  - ShareSDK2/Connection/Line
+  - ShareSDK2/Connection/LinkedIn
+  - ShareSDK2/Connection/Mail
+  - ShareSDK2/Connection/MingDao
+  - ShareSDK2/Connection/Pocket
+  - ShareSDK2/Connection/Print
+  - ShareSDK2/Connection/QQ
+  - ShareSDK2/Connection/QZone
+  - ShareSDK2/Connection/RenRen
   - ShareSDK2/Connection/SinaWeibo
+  - ShareSDK2/Connection/SMS
+  - ShareSDK2/Connection/TencentWeibo
+  - ShareSDK2/Connection/Tumblr
+  - ShareSDK2/Connection/Twitter
+  - ShareSDK2/Connection/VKontakte
   - ShareSDK2/Connection/WeChat
+  - ShareSDK2/Connection/WhatsApp
+  - ShareSDK2/Connection/YiXin
+  - ShareSDK2/Connection/YouDaoNote
+  - ShareSDK2/UI
+  - ShareSDK2/UI/Flat
+  - ShareSDK2/UI/iPadDefault
   - ShareSDK2/UI/iPadSimple
+  - ShareSDK2/UI/iPhoneAppRecommend
+  - ShareSDK2/UI/iPhoneDefault
   - ShareSDK2/UI/iPhoneSimple
   - Toast
 
 SPEC CHECKSUMS:
-  Masonry: 4972309f2f134de9dd312f4dc4a21359b50e6caa
+  Masonry: ff105a956abcd19a618b2028b121cb638d7a8e2f
   MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad
   ShareSDK2: 4f0e2c280f95e98151c74deaa52085cde640952f
-  Toast: 0773b8fc0e97352ca6054517bec7ebdd4110029d
+  Toast: 32c59229abfcf41850162b83bb9259dc84372473
 
 COCOAPODS: 0.39.0

@@ -1,0 +1,1 @@
+../../../../ShareSDK2/ShareSDK/Connection/PinterestConnection.framework/Headers/ISSPinterestApp.h
