@@ -113,119 +113,14 @@
 
 -(UIBarButtonItem *)barItem {
     if (!_barItem) {
-        _barItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(commonShare:)];
+        _barItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(shareAction:)];
     }
     return _barItem;
 }
 
-- (void)commonShare:(id)sender
-{
-    //1、构造分享内容
-    //1.1、要分享的图片（以下分别是网络图片和本地图片的生成方式的示例）
-    id<ISSCAttachment> remoteAttachment = [ShareSDKCoreService attachmentWithUrl:@"http://f.hiphotos.bdimg.com/album/w%3D2048/sign=df8f1fe50dd79123e0e09374990c5882/cf1b9d16fdfaaf51e6d1ce528d5494eef01f7a28.jpg"];
-    //        id<ISSCAttachment> localAttachment = [ShareSDKCoreService attachmentWithPath:[[NSBundle mainBundle] pathForResource:@"shareImg" ofType:@"png"]];
-    
-    //1.2、以下参数分别对应：内容、默认内容、图片、标题、链接、描述、分享类型
-    id<ISSContent> publishContent = [ShareSDK content:@"test content of ShareSDK"
-                                       defaultContent:nil
-                                                image:remoteAttachment
-                                                title:@"test title"
-                                                  url:@"http://www.mob.com"
-                                          description:nil
-                                            mediaType:SSPublishContentMediaTypeNews];
-    
-    //1+、创建弹出菜单容器（iPad应用必要，iPhone应用非必要）
-    id<ISSContainer> container = [ShareSDK container];
-    //[container setIPadContainerWithView:sender arrowDirect:UIPopoverArrowDirectionUp];
-    [container setIPadContainerWithBarButtonItem:sender arrowDirect:UIPopoverArrowDirectionUp];
-    
-    //2、展现分享菜单
-    [ShareSDK showShareActionSheet:container
-                         shareList:nil
-                           content:publishContent
-                     statusBarTips:NO
-                       authOptions:nil
-                      shareOptions:nil
-                            result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
-                                
-                                NSLog(@"=== response state :%zi ",state);
-                                
-                                //可以根据回调提示用户。
-                                if (state == SSResponseStateSuccess)
-                                {
-                                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Success"
-                                                                                    message:nil
-                                                                                   delegate:self
-                                                                          cancelButtonTitle:@"OK"
-                                                                          otherButtonTitles:nil, nil];
-                                    [alert show];
-                                }
-                                else if (state == SSResponseStateFail)
-                                {
-                                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Failed"
-                                                                                    message:[NSString stringWithFormat:@"Error Description：%@",[error errorDescription]]
-                                                                                   delegate:self
-                                                                          cancelButtonTitle:@"OK"
-                                                                          otherButtonTitles:nil, nil];
-                                    [alert show];
-                                }
-                            }];
-}
 
 -(void) shareAction:(id)sender
 {
-    //1、构造分享内容
-    //1.1、要分享的图片（以下分别是网络图片和本地图片的生成方式的示例）
-    id<ISSCAttachment> remoteAttachment = [ShareSDKCoreService attachmentWithUrl:@"http://f.hiphotos.bdimg.com/album/w%3D2048/sign=df8f1fe50dd79123e0e09374990c5882/cf1b9d16fdfaaf51e6d1ce528d5494eef01f7a28.jpg"];
-    //        id<ISSCAttachment> localAttachment = [ShareSDKCoreService attachmentWithPath:[[NSBundle mainBundle] pathForResource:@"shareImg" ofType:@"png"]];
-    
-    //1.2、以下参数分别对应：内容、默认内容、图片、标题、链接、描述、分享类型
-    id<ISSContent> publishContent = [ShareSDK content:@"test content of ShareSDK"
-                                       defaultContent:nil
-                                                image:remoteAttachment
-                                                title:@"test title"
-                                                  url:@"http://www.mob.com"
-                                          description:nil
-                                            mediaType:SSPublishContentMediaTypeNews];
-    
-    /*
-    //1+、创建弹出菜单容器（iPad应用必要，iPhone应用非必要）
-    id<ISSContainer> container = [ShareSDK container];
-    [container setIPadContainerWithBarButtonItem:sender arrowDirect:UIPopoverArrowDirectionUp];
-    container setip
-    */
-    //2、展现分享菜单
-    [ShareSDK showShareActionSheet: nil
-                         shareList:nil
-                           content:publishContent
-                     statusBarTips:NO
-                       authOptions:nil
-                      shareOptions:nil
-                            result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
-                                
-                                NSLog(@"=== response state :%zi ",state);
-                                
-                                //可以根据回调提示用户。
-                                if (state == SSResponseStateSuccess)
-                                {
-                                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Success"
-                                                                                    message:nil
-                                                                                   delegate:self
-                                                                          cancelButtonTitle:@"OK"
-                                                                          otherButtonTitles:nil, nil];
-                                    [alert show];
-                                }
-                                else if (state == SSResponseStateFail)
-                                {
-                                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Failed"
-                                                                                    message:[NSString stringWithFormat:@"Error Description：%@",[error errorDescription]]
-                                                                                   delegate:self
-                                                                          cancelButtonTitle:@"OK"
-                                                                          otherButtonTitles:nil, nil];
-                                    [alert show];
-                                }
-                            }];
-    /*
     NSArray *arr = [NSArray arrayWithObjects:[self screenShot], nil];
     UIActivityViewController* vc = [[UIActivityViewController alloc]
                                     initWithActivityItems:arr applicationActivities:nil];
@@ -235,10 +130,14 @@
         [self presentViewController:vc animated:YES completion:nil];
     }
     else {
+        /*
+        vc.modalPresentationStyle = UIModalPresentationPopover;
+        vc.popoverPresentationController.sourceRect = CGRectMake(self.view.frame.size.width/2, self.view.frame.size.height-50, 1, 1);
+        [self presentViewController:vc animated:YES completion:nil];
+        */
         UIPopoverController *popup = [[UIPopoverController alloc] initWithContentViewController:vc];
         [popup presentPopoverFromBarButtonItem:self.barItem permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
     }
-     */
 }
 
 -(void) viewWillAppear:(BOOL)animated
@@ -252,11 +151,7 @@
     self.shownArr = [NSMutableArray array];
     [self searchName];
     [self orderNames];
-    /*
-    for (EnglishNameInfo * info in self.shownArr) {
-        
-    }
-     */
+   
     NSString *xing;
     
     if (self.xings.count) {
