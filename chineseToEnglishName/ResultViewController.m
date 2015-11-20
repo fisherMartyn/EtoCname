@@ -38,6 +38,7 @@
 
 @property (nonatomic,strong) UIToolbar *toolBar;
 @property (nonatomic,strong) UIBarButtonItem *barItem;
+@property (nonatomic,strong) UIView *popUpView;
 @end
 
 @implementation ResultViewController
@@ -51,10 +52,9 @@
     UIBarButtonItem * stats = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"stats"] style:UIBarButtonItemStylePlain target:self action:@selector(showStatsAction)];
     self.navigationItem.rightBarButtonItem = stats;
     
-    /*
-    UIBarButtonItem *back = [[UIBarButtonItem alloc] initWithTitle:@"返回" style:UIBarButtonItemStylePlain target:self action:@selector(popback)];
-    self.navigationItem.leftBarButtonItem = back;
-    */
+    
+    UIBarButtonItem *left = [[UIBarButtonItem alloc] initWithTitle:@"重新取名" style:UIBarButtonItemStylePlain target:self action:@selector(goback)];
+    self.navigationItem.leftBarButtonItem = left;
     
     self.scrollview = [[ResultScrollView alloc] initWithFrame:CGRectZero];
     self.scrollview.backgroundColor = [UIColor clearColor];
@@ -82,6 +82,27 @@
         make.bottom.mas_equalTo(ws.view.mas_bottom).with.offset(-10);
     }];
     
+    
+    [self.view addSubview:self.popUpView];
+    [self.popUpView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.width.equalTo(@20);
+        make.height.equalTo(@20);
+        make.bottom.equalTo(ws.view.mas_bottom).with.offset(-20);
+        make.centerX.equalTo(ws.view.mas_centerX);
+    }];
+    
+}
+-(void) goback
+{
+    [self.navigationController popToRootViewControllerAnimated:YES];
+}
+-(UIView *) popUpView
+{
+    if (!_popUpView) {
+        _popUpView = [UIView new];
+        _popUpView.backgroundColor = [UIColor clearColor];
+    }
+    return _popUpView;
 }
 
 -(UIImage *) screenShot {
@@ -114,6 +135,7 @@
 -(UIBarButtonItem *)barItem {
     if (!_barItem) {
         _barItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(shareAction:)];
+        //[_barItem setTitle:@"返回"];
     }
     return _barItem;
 }
@@ -124,22 +146,22 @@
     
     UIImage *img = [self screenShot];
     //构造分享内容
-    id<ISSContent> publishContent = [ShareSDK content:@"分享内容"
-                                       defaultContent:@"测试一下"
+    id<ISSContent> publishContent = [ShareSDK content:nil
+                                       defaultContent:nil
                                                 image:[ShareSDK jpegImageWithImage:img quality:1]
-                                                title:@"ShareSDK"
-                                                  url:nil
-                                          description:@"这是一条测试信息"
-                                            mediaType:SSPublishContentMediaTypeNews];
+                                                title:nil
+                                                  url:@"www.google.com"
+                                          description:nil
+                                            mediaType:SSPublishContentMediaTypeImage];
     //创建iPad弹出菜单容器,详见第六步
     id<ISSContainer> container = [ShareSDK container];
-    //[container setIPadContainerWithView:sender arrowDirect:UIPopoverArrowDirectionUp];
+    [container setIPadContainerWithView:self.popUpView arrowDirect:UIPopoverArrowDirectionUp];
     
     //弹出分享菜单
     [ShareSDK showShareActionSheet:container
                          shareList:nil
                            content:publishContent
-                     statusBarTips:YES
+                     statusBarTips:NO
                        authOptions:nil
                       shareOptions:nil
                             result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
@@ -452,7 +474,7 @@
             [inter removeObjectAtIndex:iter];
             ++count;
         }
-        if (count > 29) {
+        if (count > 59) {
             break;
         }
         if (inter.count) {

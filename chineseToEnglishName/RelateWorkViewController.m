@@ -22,8 +22,12 @@
     // Do any additional setup after loading the view.
     self.view.backgroundColor  = RGBCOLOR(0xf8, 0xf8, 0xf8);
     
+    [self.navigationController.navigationBar
+     setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
+    self.navigationItem.title = @"我们的app";
     self.navigationController.navigationBar.barTintColor = BGCOLOR;
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    
     
     UIBarButtonItem *right = [[UIBarButtonItem alloc] initWithTitle:@"完成" style:UIBarButtonItemStylePlain target:self action:@selector(popback)];
     self.navigationItem.rightBarButtonItem = right;
@@ -73,7 +77,8 @@
 {
     UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:nil];
     cell.backgroundColor = [UIColor whiteColor];
-    cell.textLabel.textColor = [UIColor blackColor];
+    //cell.textLabel.textColor = [UIColor blackColor];
+    cell.textLabel.textColor = BGCOLOR;
     cell.textLabel.text = [self.words objectAtIndex:indexPath.row];
     cell.textLabel.textAlignment = NSTextAlignmentLeft;
     return cell;

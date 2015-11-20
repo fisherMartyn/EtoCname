@@ -24,6 +24,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    [[UIApplication sharedApplication] setStatusBarHidden:NO animated:YES];
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     [ShareSDK registerApp:@"c70d86c25c58"];
     
     //微信分享
@@ -92,6 +94,7 @@
                              consumerSecret:@"ROkFqr8c3m1HXqS3rm3TJ0WkAJuwBOSaWhPbZ9Ojuc"
                                 redirectUri:@"http://www.sharesdk.cn"];
      */
+    /*
     //连接短信分享
     [ShareSDK connectSMS];
     //连接邮件
@@ -100,6 +103,7 @@
     [ShareSDK connectAirPrint];
     //连接拷贝
     [ShareSDK connectCopy];
+     */
     return YES;
 }
 

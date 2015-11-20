@@ -527,8 +527,10 @@
     [super setSelected:selected];
     if (selected) {
         self.backgroundColor = [UIColor whiteColor];
+        self.layer.borderColor  =[UIColor whiteColor].CGColor;
     } else {
         self.backgroundColor = RGBCOLOR(0x48, 0xad, 0xd6);
+        self.layer.borderColor = RGBCOLOR(0x4a, 0xcb, 0xe5).CGColor;
     }
 }
 
