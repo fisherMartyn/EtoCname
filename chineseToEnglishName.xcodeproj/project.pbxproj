@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		3103BD0C2652A37BB20E50DF /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EAD913DC13CA434B74259540 /* libPods.a */; };
-		A83D21771BFF30710001B19D /* nav_back.png in Resources */ = {isa = PBXBuildFile; fileRef = A83D21761BFF30710001B19D /* nav_back.png */; };
 		A85CC58E1BF645580052080F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A85CC58D1BF645580052080F /* main.m */; };
 		A85CC5911BF645580052080F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A85CC5901BF645580052080F /* AppDelegate.m */; };
 		A85CC5941BF645580052080F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A85CC5931BF645580052080F /* ViewController.m */; };
@@ -34,7 +33,6 @@
 /* Begin PBXFileReference section */
 		9E364D211019377E7648A708 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		A83D21741BFE170F0001B19D /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		A83D21761BFF30710001B19D /* nav_back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nav_back.png; sourceTree = "<group>"; };
 		A85CC5891BF645580052080F /* 英文名.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "英文名.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A85CC58D1BF645580052080F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		A85CC58F1BF645580052080F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -166,7 +164,6 @@
 		A85CC5EC1BF728CC0052080F /* images */ = {
 			isa = PBXGroup;
 			children = (
-				A83D21761BFF30710001B19D /* nav_back.png */,
 				A85CC6531BFA29660052080F /* star.png */,
 				A85CC5EA1BF728C60052080F /* stats.png */,
 			);
@@ -256,7 +253,6 @@
 				A85CC5F51BF74ACE0052080F /* Info.txt in Resources */,
 				A85CC59F1BF645580052080F /* LaunchScreen.storyboard in Resources */,
 				A85CC5F31BF73C620052080F /* Similar.txt in Resources */,
-				A83D21771BFF30710001B19D /* nav_back.png in Resources */,
 				A85CC59C1BF645580052080F /* Assets.xcassets in Resources */,
 				A85CC6541BFA29660052080F /* star.png in Resources */,
 				A85CC5971BF645580052080F /* Main.storyboard in Resources */,

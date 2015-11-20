@@ -608,10 +608,12 @@
         [self addSubview:self.englishNameLabel];
         [self.englishNameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(ws.nameLabel.mas_bottom).with.offset(20);
-            make.width.equalTo(ws.nameLabel.mas_width).with.offset(-20);
+            make.width.equalTo(ws.nameLabel.mas_width).with.offset(-5);
             make.height.equalTo(@45);
             make.centerX.equalTo(ws.mas_centerX);
         }];
+        self.englishNameLabel.adjustsFontSizeToFitWidth = YES;
+
         
         
         self.eFayinLabel = [[UILabel alloc] initWithFrame:CGRectZero];
