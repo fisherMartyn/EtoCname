@@ -44,6 +44,26 @@
 -(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    NSString *iTunesLink;
+    switch (indexPath.row) {
+        case 0:
+            iTunesLink = @"https://itunes.apple.com/app/apple-store/id980801998?pt=56993800&ct=english_name&mt=8";
+            break;
+        case 1:
+            iTunesLink = @"https://itunes.apple.com/app/apple-store/id989527141?pt=56993800&ct=english_name&mt=8";
+            break;
+        case 2:
+            iTunesLink = @"https://itunes.apple.com/app/apple-store/id850498024?pt=56993800&ct=english_name&mt=8";
+            break;
+        case 3:
+            iTunesLink = @"https://itunes.apple.com/app/apple-store/id862907539?pt=56993800&ct=english_name&mt=8";
+            break;
+        default:
+            break;
+    }
+    if (iTunesLink) {
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:iTunesLink]];
+    }
 }
 -(NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
