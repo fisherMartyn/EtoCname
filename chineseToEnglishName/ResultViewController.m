@@ -121,14 +121,14 @@
 
 -(void) shareAction:(id)sender
 {
-    NSString *imagePath = [[NSBundle mainBundle] pathForResource:@"ShareSDK" ofType:@"png"];
     
+    UIImage *img = [self screenShot];
     //构造分享内容
     id<ISSContent> publishContent = [ShareSDK content:@"分享内容"
                                        defaultContent:@"测试一下"
-                                                image:[ShareSDK imageWithPath:imagePath]
+                                                image:[ShareSDK jpegImageWithImage:img quality:1]
                                                 title:@"ShareSDK"
-                                                  url:@"http://www.mob.com"
+                                                  url:nil
                                           description:@"这是一条测试信息"
                                             mediaType:SSPublishContentMediaTypeNews];
     //创建iPad弹出菜单容器,详见第六步
