@@ -272,43 +272,48 @@
         
         if (fields.count >= 8) {
             NSString *pinyin = [fields objectAtIndex:7];
-            NSArray *seppinyins = [pinyin componentsSeparatedByString:@","];
-            for (NSString *seppinyin in seppinyins) {
-                if (![seppinyin isEqualToString:@""]) {
-                    EnglishNameInfo *info = [NSEntityDescription insertNewObjectForEntityForName:@"EnglishNameInfo" inManagedObjectContext:appdelegate.managedObjectContext];
-                    [info setEnglishName:englishName];
-                    [info setEnglishNameCnt:englishNameCnt];
-                    [info setChineseName:chineseName];
-                    [info setChineseNameCnt:chineseNameCnt];
-                    [info setSexInfo:sexInfo];
-                    [info setEnglishFayin:englishFayin];
-                    [info setPopularCnt:popularCnt];
-                    [info setPinyinFayin:seppinyin];
+            if (![pinyin isEqualToString:@""]) {
+                NSArray *seppinyins = [pinyin componentsSeparatedByString:@","];
+                for (NSString *seppinyin in seppinyins) {
+                    if (![seppinyin isEqualToString:@""]) {
+                        EnglishNameInfo *info = [NSEntityDescription insertNewObjectForEntityForName:@"EnglishNameInfo" inManagedObjectContext:appdelegate.managedObjectContext];
+                        [info setEnglishName:englishName];
+                        [info setEnglishNameCnt:englishNameCnt];
+                        [info setChineseName:chineseName];
+                        [info setChineseNameCnt:chineseNameCnt];
+                        [info setSexInfo:sexInfo];
+                        [info setEnglishFayin:englishFayin];
+                        [info setPopularCnt:popularCnt];
+                        [info setPinyinFayin:seppinyin];
+                    }
+                }
+                continue;
+            } else {
+                NSMutableString *pinyinFayin = [[NSMutableString alloc] initWithString:chineseName];
+                
+                CFStringTransform((__bridge CFMutableStringRef)pinyinFayin, 0, kCFStringTransformMandarinLatin, NO);
+                CFStringTransform((__bridge CFMutableStringRef)pinyinFayin, 0, kCFStringTransformStripDiacritics, NO);
+                
+                NSArray *pinyin = [pinyinFayin componentsSeparatedByString:@" "];
+                for (NSString * comppinyin in pinyin) {
+                    if (![comppinyin isEqualToString:@""]) {
+                        EnglishNameInfo *info = [NSEntityDescription insertNewObjectForEntityForName:@"EnglishNameInfo" inManagedObjectContext:appdelegate.managedObjectContext];
+                        [info setEnglishName:englishName];
+                        [info setEnglishNameCnt:englishNameCnt];
+                        [info setChineseName:chineseName];
+                        [info setChineseNameCnt:chineseNameCnt];
+                        [info setSexInfo:sexInfo];
+                        [info setEnglishFayin:englishFayin];
+                        [info setPopularCnt:popularCnt];
+                        [info setPinyinFayin:comppinyin];
+                        
+                    }
                 }
             }
-            continue;
+            
         }
         
-        NSMutableString *pinyinFayin = [[NSMutableString alloc] initWithString:chineseName];
         
-        CFStringTransform((__bridge CFMutableStringRef)pinyinFayin, 0, kCFStringTransformMandarinLatin, NO);
-        CFStringTransform((__bridge CFMutableStringRef)pinyinFayin, 0, kCFStringTransformStripDiacritics, NO);
-        
-        NSArray *pinyin = [pinyinFayin componentsSeparatedByString:@" "];
-        for (NSString * comppinyin in pinyin) {
-            if (![comppinyin isEqualToString:@""]) {
-                EnglishNameInfo *info = [NSEntityDescription insertNewObjectForEntityForName:@"EnglishNameInfo" inManagedObjectContext:appdelegate.managedObjectContext];
-                [info setEnglishName:englishName];
-                [info setEnglishNameCnt:englishNameCnt];
-                [info setChineseName:chineseName];
-                [info setChineseNameCnt:chineseNameCnt];
-                [info setSexInfo:sexInfo];
-                [info setEnglishFayin:englishFayin];
-                [info setPopularCnt:popularCnt];
-                [info setPinyinFayin:comppinyin];
-                
-            }
-        }
        
     }
     

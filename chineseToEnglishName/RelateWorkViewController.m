@@ -51,7 +51,12 @@
 {
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 20)];
     view.backgroundColor = [UIColor clearColor];
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(15, 0, self.view.frame.size.width-20, 20)];
+    UILabel *label;
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
+        label = [[UILabel alloc] initWithFrame:CGRectMake(15, 0, self.view.frame.size.width-20, 20)];
+    } else {
+        label = [[UILabel alloc] initWithFrame:CGRectMake(45, 0, self.view.frame.size.width-20, 20)];
+    }
     label.backgroundColor = [UIColor clearColor];
     label.text = @"我们的app";
     label.font = [UIFont systemFontOfSize:12];
