@@ -22,9 +22,11 @@
     // Do any additional setup after loading the view.
     self.view.backgroundColor  = RGBCOLOR(0xf8, 0xf8, 0xf8);
     
+    /*
     [self.navigationController.navigationBar
      setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
     self.navigationItem.title = @"我们的app";
+     */
     self.navigationController.navigationBar.barTintColor = BGCOLOR;
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     
@@ -43,6 +45,23 @@
         make.top.equalTo(ws.view.mas_top).with.offset(40);
         make.centerX.equalTo(ws.view.mas_centerX);
     }];
+}
+
+-(UIView*) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 20)];
+    view.backgroundColor = [UIColor clearColor];
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(15, 0, self.view.frame.size.width-20, 20)];
+    label.backgroundColor = [UIColor clearColor];
+    label.text = @"我们的app";
+    label.font = [UIFont systemFontOfSize:12];
+    label.textColor = RGBCOLOR(0x87, 0x87, 0x87);
+    [view addSubview:label];
+    return view;
+}
+-(CGFloat) tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 28;
 }
 
 -(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -78,7 +97,7 @@
     UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:nil];
     cell.backgroundColor = [UIColor whiteColor];
     //cell.textLabel.textColor = [UIColor blackColor];
-    cell.textLabel.textColor = BGCOLOR;
+    cell.textLabel.textColor = RGBCOLOR(0x00, 0x7a, 0xff);
     cell.textLabel.text = [self.words objectAtIndex:indexPath.row];
     cell.textLabel.textAlignment = NSTextAlignmentLeft;
     return cell;

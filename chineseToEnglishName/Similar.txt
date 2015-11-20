@@ -125,7 +125,9 @@ za;zha;zai;zan;zang;
 zao;zhao;
 ze;zhe;zhi;zi;zei;zhei;
 zen;zeng;
-jia;jian;jiang;zhai;zhan;zhang;zhen;zheng;
+jian;zhan
+jia;
+jiang;zhai;zhang;zhen;zheng;
 zhong;zong;
 zhou;zou;
 zhu;zu;

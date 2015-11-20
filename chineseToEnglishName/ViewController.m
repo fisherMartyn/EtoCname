@@ -132,8 +132,39 @@
 {
     [super viewDidAppear:animated];
     
+
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    NSString *currentAppVersion = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
+    NSString *previousVersion = [defaults objectForKey:@"appVersion"];
+    if (!previousVersion) {
+        // first launch
+        
+        [self firstload];
+        [defaults setObject:currentAppVersion forKey:@"appVersion"];
+        [defaults synchronize];
+    } else if ([previousVersion isEqualToString:currentAppVersion]) {
+        // same version
+    } else {
+        // other version
+        
+        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+        [userDefaults setObject:@"clear" forKey:@"firstLoad"]; //use to clear data.
+        [self firstload];
+        
+        [defaults setObject:currentAppVersion forKey:@"appVersion"];
+        [defaults synchronize];
+    }
+    
+    
+    
+    
+}
+-(void) firstload
+{
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    //[userDefaults setObject:@"clear" forKey:@"firstLoad"]; //use to clear data.
+
     NSString *firstload  = [[NSUserDefaults standardUserDefaults] objectForKey:@"firstLoad"];
     if (![firstload isEqualToString:@"loaded"]) {
         MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
@@ -155,7 +186,6 @@
         });
         
     }
-    
 }
 
 -(BOOL) textFieldShouldReturn:(UITextField *)textField
@@ -239,6 +269,25 @@
         NSString *sexInfo = [fields objectAtIndex:4];
         NSString *englishFayin = [fields objectAtIndex:5];
         NSString *popularCnt = [fields objectAtIndex:6];
+        
+        if (fields.count >= 8) {
+            NSString *pinyin = [fields objectAtIndex:7];
+            NSArray *seppinyins = [pinyin componentsSeparatedByString:@","];
+            for (NSString *seppinyin in seppinyins) {
+                if (![seppinyin isEqualToString:@""]) {
+                    EnglishNameInfo *info = [NSEntityDescription insertNewObjectForEntityForName:@"EnglishNameInfo" inManagedObjectContext:appdelegate.managedObjectContext];
+                    [info setEnglishName:englishName];
+                    [info setEnglishNameCnt:englishNameCnt];
+                    [info setChineseName:chineseName];
+                    [info setChineseNameCnt:chineseNameCnt];
+                    [info setSexInfo:sexInfo];
+                    [info setEnglishFayin:englishFayin];
+                    [info setPopularCnt:popularCnt];
+                    [info setPinyinFayin:seppinyin];
+                }
+            }
+            continue;
+        }
         
         NSMutableString *pinyinFayin = [[NSMutableString alloc] initWithString:chineseName];
         

@@ -92,7 +92,7 @@
     [self.popUpView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.width.equalTo(@20);
         make.height.equalTo(@20);
-        make.bottom.equalTo(ws.view.mas_bottom).with.offset(-20);
+        make.bottom.equalTo(ws.view.mas_bottom).with.offset(-60);
         make.centerX.equalTo(ws.view.mas_centerX);
     }];
     
@@ -353,7 +353,7 @@
     NSPredicate *combine = NULL;
     combine = [NSCompoundPredicate andPredicateWithSubpredicates:@[predictate]];
     if (self.sexid) {
-        combine = [NSCompoundPredicate andPredicateWithSubpredicates:@[pred_sex]];
+        combine = [NSCompoundPredicate andPredicateWithSubpredicates:@[combine,pred_sex]];
     }
     if (self.sounid) {
         combine = [NSCompoundPredicate andPredicateWithSubpredicates:@[combine,pred_sound]];
@@ -366,6 +366,12 @@
     results = [[appdelegate.managedObjectContext executeFetchRequest:request error:&error] mutableCopy];
     self.firstMings =results;
     
+    /*
+    for (EnglishNameInfo *tinfo in results) {
+        NSLog(@"%@ -- %@", tinfo.englishName, tinfo.chineseName);
+    }
+     */
+    
     //从第二个汉字获得所有信息
     if (![mfirst isEqualToString:mlast]) {
         request = [[NSFetchRequest alloc] initWithEntityName:@"EnglishNameInfo"];
@@ -376,7 +382,7 @@
         combine = [NSCompoundPredicate andPredicateWithSubpredicates:@[predictate]];
         
         if (self.sexid) {
-            combine = [NSCompoundPredicate andPredicateWithSubpredicates:@[predictate,pred_sex]];
+            combine = [NSCompoundPredicate andPredicateWithSubpredicates:@[combine,pred_sex]];
         }
         if (self.sounid) {
             combine = [NSCompoundPredicate andPredicateWithSubpredicates:@[combine,pred_sound]];
@@ -488,7 +494,7 @@
             [inter removeObjectAtIndex:iter];
             ++count;
         }
-        if (count > 29) {
+        if (count > 59) {
             break;
         }
         if (first.count) {
@@ -497,7 +503,7 @@
             [first removeObjectAtIndex:iter];
             ++count;
         }
-        if (count >29 ) {
+        if (count >59 ) {
             break;
         }
         if (last.count) {
@@ -506,7 +512,7 @@
             [last removeObjectAtIndex:iter];
             ++count;
         }
-        if (count >29 ) {
+        if (count >59 ) {
             break;
         }
         if (popular.count) {
@@ -515,7 +521,7 @@
             [popular removeObjectAtIndex:iter];
             ++count;
         }
-        if (count >29 ) {
+        if (count >59 ) {
             break;
         }
         if (inter.count == 0 && first.count == 0 && last.count == 0 && popular.count == 0 ) {
@@ -725,7 +731,7 @@
     if (self) {
         UIImageView *img = [[UIImageView alloc] initWithFrame:CGRectZero];
         img.contentMode = UIViewContentModeScaleToFill;
-        img .image = [UIImage imageNamed:@"back.png"];
+        img.image = [UIImage imageNamed:@"back.png"];
         WS(ws);
         
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectZero];
@@ -738,13 +744,13 @@
         [self addSubview:label];
         [img mas_makeConstraints:^(MASConstraintMaker *make) {
             make.height.mas_equalTo(ws.mas_height);
-            make.left.equalTo(ws.mas_left);
+            make.left.equalTo(ws.mas_left).with.offset(-10);
             make.top.equalTo(ws.mas_top);
             make.width.equalTo(img.mas_height);
         }];
         [label mas_makeConstraints:^(MASConstraintMaker *make) {
             make.height.equalTo(ws.mas_height);
-            make.left.equalTo(img.mas_right);
+            make.left.equalTo(img.mas_right).with.offset(10);
             make.top.equalTo(ws.mas_top);
             make.width.equalTo(ws.mas_width).with.offset(22);
         }];
