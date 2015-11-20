@@ -158,8 +158,6 @@
     
 }
 
-
-
 -(BOOL) textFieldShouldReturn:(UITextField *)textField
 {
     return [textField resignFirstResponder];
@@ -453,10 +451,10 @@
     ctrl.sexid = self.genderid;
     ctrl.sounid = self.soundid;
     ctrl.lengthid =self.lengthid;
-    if (![ctrl.name isEqualToString:@""]) {
+    if (![ctrl.name isEqualToString:@""] && (ctrl.name.length >1)) {
         [self.navigationController pushViewController:ctrl animated:YES];
     } else {
-        [self.view makeToast:@"姓名不得为空" duration:1.0 position:CSToastPositionCenter];
+        [self.view makeToast:@"姓和名不得为空" duration:1.0 position:CSToastPositionCenter];
     }
 }
 

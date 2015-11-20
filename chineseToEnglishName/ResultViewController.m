@@ -53,9 +53,14 @@
     self.navigationItem.rightBarButtonItem = stats;
     
     
+    BackButton *leftview = [[BackButton alloc] initWithFrame:CGRectMake(0, 0, 100, 22) title:@"重新取名"];
+    [leftview addTarget:self action:@selector(goback) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *leftitem = [[UIBarButtonItem alloc] initWithCustomView:leftview];
+    self.navigationItem.leftBarButtonItem = leftitem;
+    /*
     UIBarButtonItem *left = [[UIBarButtonItem alloc] initWithTitle:@"重新取名" style:UIBarButtonItemStylePlain target:self action:@selector(goback)];
     self.navigationItem.leftBarButtonItem = left;
-    
+    */
     self.scrollview = [[ResultScrollView alloc] initWithFrame:CGRectZero];
     self.scrollview.backgroundColor = [UIColor clearColor];
     
@@ -706,6 +711,43 @@
         }
         
         
+    }
+    return self;
+    
+}
+
+@end
+@implementation BackButton
+
+-(instancetype) initWithFrame:(CGRect)frame title:(NSString*)title;
+{
+    self = [super initWithFrame:frame];
+    if (self) {
+        UIImageView *img = [[UIImageView alloc] initWithFrame:CGRectZero];
+        img.contentMode = UIViewContentModeScaleToFill;
+        img .image = [UIImage imageNamed:@"back.png"];
+        WS(ws);
+        
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectZero];
+        label.textAlignment = NSTextAlignmentLeft;
+        label.textColor = [UIColor whiteColor];
+        label.text = title;
+        label.font = [UIFont systemFontOfSize:18];
+        
+        [self addSubview:img];
+        [self addSubview:label];
+        [img mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.height.mas_equalTo(ws.mas_height);
+            make.left.equalTo(ws.mas_left);
+            make.top.equalTo(ws.mas_top);
+            make.width.equalTo(img.mas_height);
+        }];
+        [label mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.height.equalTo(ws.mas_height);
+            make.left.equalTo(img.mas_right);
+            make.top.equalTo(ws.mas_top);
+            make.width.equalTo(ws.mas_width).with.offset(22);
+        }];
     }
     return self;
     

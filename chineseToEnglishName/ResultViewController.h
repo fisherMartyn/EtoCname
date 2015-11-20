@@ -26,3 +26,8 @@
 -(instancetype) initWithFrame:(CGRect)frame and:(NSString *)name andEnglish:(NSString *)englishName andEFayin:(NSString *)englishFayin andCFayin:(NSString *)chineseFayin andPopular:(int)popular;
 
 @end
+
+@interface BackButton : UIControl
+-(instancetype) initWithFrame:(CGRect)frame title:(NSString*)title;
+
+@end
