@@ -33,7 +33,7 @@
 /* Begin PBXFileReference section */
 		9E364D211019377E7648A708 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		A83D21741BFE170F0001B19D /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		A85CC5891BF645580052080F /* chineseToEnglishName.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = chineseToEnglishName.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A85CC5891BF645580052080F /* 英文名.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "英文名.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A85CC58D1BF645580052080F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		A85CC58F1BF645580052080F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		A85CC5901BF645580052080F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -104,7 +104,7 @@
 		A85CC58A1BF645580052080F /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A85CC5891BF645580052080F /* chineseToEnglishName.app */,
+				A85CC5891BF645580052080F /* 英文名.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -209,7 +209,7 @@
 			);
 			name = chineseToEnglishName;
 			productName = chineseToEnglishName;
-			productReference = A85CC5891BF645580052080F /* chineseToEnglishName.app */;
+			productReference = A85CC5891BF645580052080F /* 英文名.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -445,7 +445,7 @@
 				INFOPLIST_FILE = chineseToEnglishName/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = YM.chineseToEnglishName;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "英文名";
 			};
 			name = Debug;
 		};
@@ -460,7 +460,7 @@
 				INFOPLIST_FILE = chineseToEnglishName/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = YM.chineseToEnglishName;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "英文名";
 			};
 			name = Release;
 		};
