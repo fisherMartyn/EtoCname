@@ -60,68 +60,140 @@
     /* 页面布局 */
     
     WS(ws);
-    /* 输入框 */
-    [self.textView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerX.equalTo(ws.view.mas_centerX);
-        make.width.equalTo(ws.view.mas_width).with.offset(-120);
-        make.top.equalTo(ws.view.mas_top).with.offset(80);
-        make.height.mas_equalTo(40);
-    }];
     
-    /* 两音三音选择 */
-    [self.sound2 mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(ws.view.mas_centerY);
-        make.left.equalTo(ws.view.mas_left).with.offset(40);
-        make.right.equalTo(ws.middleBtn.mas_centerX).with.offset(-20);
-        make.height.mas_equalTo(45);
-    }];
-    [self.sound3 mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(ws.sound2.mas_top);
-        make.right.equalTo(ws.view.mas_right).with.offset(-40);
-        make.left.equalTo(ws.middleBtn.mas_centerX).with.offset(20);
-        make.height.mas_equalTo(45);
+    //iphone的在这调
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
+        /* 输入框 */
+        [self.textView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.centerX.equalTo(ws.view.mas_centerX);
+            make.width.equalTo(ws.view.mas_width).with.offset(-120);
+            make.top.equalTo(ws.view.mas_top).with.offset(80);
+            make.height.mas_equalTo(40);
+        }];
         
-    }];
+        /* 两音三音选择 */
+        [self.sound2 mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(ws.view.mas_centerY);
+            make.left.equalTo(ws.view.mas_left).with.offset(40);
+            make.right.equalTo(ws.middleBtn.mas_centerX).with.offset(-20);
+            make.height.mas_equalTo(45);
+        }];
+        [self.sound3 mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(ws.sound2.mas_top);
+            make.right.equalTo(ws.view.mas_right).with.offset(-40);
+            make.left.equalTo(ws.middleBtn.mas_centerX).with.offset(20);
+            make.height.mas_equalTo(45);
+            
+        }];
+        
+        /* 性别选择 */
+        [self.middleBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.centerX.equalTo(ws.view.mas_centerX);
+            make.size.mas_equalTo(CGSizeMake(60, 60));
+            make.bottom.equalTo(self.sound2.mas_top).with.offset(-20);
+        }];
+        [self.leftBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(ws.middleBtn.mas_top);
+            make.size.mas_equalTo(CGSizeMake(60, 60));
+            make.right.mas_equalTo(ws.middleBtn.mas_left).with.offset(-40);
+        }];
+        [self.rightBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(ws.middleBtn.mas_top);
+            make.size.mas_equalTo(CGSizeMake(60, 60));
+            make.left.mas_equalTo(ws.middleBtn.mas_right).with.offset(40);
+        }];
+        
+        
+        
+        /* 名字选择 */
+        [self.shortBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(self.sound2.mas_bottom).with.offset(30);
+            make.left.equalTo(ws.view.mas_left).with.offset(40);
+            make.right.equalTo(ws.middleBtn.mas_centerX).with.offset(-20);
+            make.height.mas_equalTo(45);
+        }];
+        [self.longBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(ws.shortBtn.mas_top);
+            make.right.equalTo(ws.view.mas_right).with.offset(-40);
+            make.left.equalTo(ws.middleBtn.mas_centerX).with.offset(20);
+            make.height.mas_equalTo(45);
+        }];
+        
+        /* 确认按钮*/
+        [self.confirm mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.bottom.equalTo(ws.view.mas_bottom).with.offset(-50);
+            make.left.equalTo(ws.view.mas_left).with.offset(50);
+            make.right.equalTo(ws.view.mas_right).with.offset(-50);
+            make.height.mas_equalTo(40);
+        }];
+        
+    } else {
+        //ipad的在这调
+        /* 输入框 */
+        [self.textView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.centerX.equalTo(ws.view.mas_centerX);
+            make.width.equalTo(ws.view.mas_width).with.offset(-120);
+            make.top.equalTo(ws.view.mas_top).with.offset(80);
+            make.height.mas_equalTo(40);
+        }];
+        
+        /* 两音三音选择 */
+        [self.sound2 mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(ws.view.mas_centerY);
+            make.left.equalTo(ws.view.mas_left).with.offset(40);
+            make.right.equalTo(ws.middleBtn.mas_centerX).with.offset(-20);
+            make.height.mas_equalTo(45);
+        }];
+        [self.sound3 mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(ws.sound2.mas_top);
+            make.right.equalTo(ws.view.mas_right).with.offset(-40);
+            make.left.equalTo(ws.middleBtn.mas_centerX).with.offset(20);
+            make.height.mas_equalTo(45);
+            
+        }];
+        
+        /* 性别选择 */
+        [self.middleBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.centerX.equalTo(ws.view.mas_centerX);
+            make.size.mas_equalTo(CGSizeMake(60, 60));
+            make.bottom.equalTo(self.sound2.mas_top).with.offset(-20);
+        }];
+        [self.leftBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(ws.middleBtn.mas_top);
+            make.size.mas_equalTo(CGSizeMake(60, 60));
+            make.right.mas_equalTo(ws.middleBtn.mas_left).with.offset(-40);
+        }];
+        [self.rightBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(ws.middleBtn.mas_top);
+            make.size.mas_equalTo(CGSizeMake(60, 60));
+            make.left.mas_equalTo(ws.middleBtn.mas_right).with.offset(40);
+        }];
+        
+        
+        
+        /* 名字选择 */
+        [self.shortBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(self.sound2.mas_bottom).with.offset(30);
+            make.left.equalTo(ws.view.mas_left).with.offset(40);
+            make.right.equalTo(ws.middleBtn.mas_centerX).with.offset(-20);
+            make.height.mas_equalTo(45);
+        }];
+        [self.longBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(ws.shortBtn.mas_top);
+            make.right.equalTo(ws.view.mas_right).with.offset(-40);
+            make.left.equalTo(ws.middleBtn.mas_centerX).with.offset(20);
+            make.height.mas_equalTo(45);
+        }];
+        
+        [self.confirm mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.bottom.equalTo(ws.view.mas_bottom).with.offset(-50);
+            make.left.equalTo(ws.view.mas_left).with.offset(50);
+            make.right.equalTo(ws.view.mas_right).with.offset(-50);
+            make.height.mas_equalTo(40);
+        }];
+    }
     
-    /* 性别选择 */
-    [self.middleBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerX.equalTo(ws.view.mas_centerX);
-        make.size.mas_equalTo(CGSizeMake(60, 60));
-        make.bottom.equalTo(self.sound2.mas_top).with.offset(-20);
-    }];
-    [self.leftBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(ws.middleBtn.mas_top);
-        make.size.mas_equalTo(CGSizeMake(60, 60));
-        make.right.mas_equalTo(ws.middleBtn.mas_left).with.offset(-40);
-    }];
-    [self.rightBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(ws.middleBtn.mas_top);
-        make.size.mas_equalTo(CGSizeMake(60, 60));
-        make.left.mas_equalTo(ws.middleBtn.mas_right).with.offset(40);
-    }];
     
-    
-    
-    /* 名字选择 */
-    [self.shortBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.sound2.mas_bottom).with.offset(30);
-        make.left.equalTo(ws.view.mas_left).with.offset(40);
-        make.right.equalTo(ws.middleBtn.mas_centerX).with.offset(-20);
-        make.height.mas_equalTo(45);
-    }];
-    [self.longBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(ws.shortBtn.mas_top);
-        make.right.equalTo(ws.view.mas_right).with.offset(-40);
-        make.left.equalTo(ws.middleBtn.mas_centerX).with.offset(20);
-        make.height.mas_equalTo(45);
-    }];
-    
-    [self.confirm mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.bottom.equalTo(ws.view.mas_bottom).with.offset(-50);
-        make.left.equalTo(ws.view.mas_left).with.offset(50);
-        make.right.equalTo(ws.view.mas_right).with.offset(-50);
-        make.height.mas_equalTo(40);
-    }];
     
     
     
@@ -168,7 +240,7 @@
     NSString *firstload  = [[NSUserDefaults standardUserDefaults] objectForKey:@"firstLoad"];
     if (![firstload isEqualToString:@"loaded"]) {
         MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        hud.mode = MBProgressHUDModeIndeterminate;
+        hud.mode = MBProgressHUDModeText;
         hud.labelText = @"首次打开，加载中";
         
         

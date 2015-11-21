@@ -224,7 +224,14 @@
     
     for (int i=0; i<count; ++i) {
         EnglishNameInfo *info = [self.shownArr objectAtIndex:i];
-        PageView *page = [[PageView alloc] initWithFrame:CGRectMake(i*self.view.frame.size.width + 40, 30, self.view.frame.size.width-80, self.scrollview.contentSize.height -10) and:self.name andEnglish:[NSString stringWithFormat:@"%@ %@",info.englishName,xing] andEFayin:info.englishFayin andCFayin:info.chineseName andPopular:info.popularCnt.intValue];
+        PageView *page;
+        //iphone
+        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
+            page = [[PageView alloc] initWithFrame:CGRectMake(i*self.view.frame.size.width + 40, 30, self.view.frame.size.width-80, self.scrollview.contentSize.height -10) and:self.name andEnglish:[NSString stringWithFormat:@"%@ %@",info.englishName,xing] andEFayin:info.englishFayin andCFayin:info.chineseName andPopular:info.popularCnt.intValue];
+        } else {
+        //ipad
+            page = [[PageView alloc] initWithFrame:CGRectMake(i*self.view.frame.size.width + 40, 30, self.view.frame.size.width-80, self.scrollview.contentSize.height -10) and:self.name andEnglish:[NSString stringWithFormat:@"%@ %@",info.englishName,xing] andEFayin:info.englishFayin andCFayin:info.chineseName andPopular:info.popularCnt.intValue];
+        }
         [self.scrollview addSubview:page];
     }
     
