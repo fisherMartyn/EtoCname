@@ -448,7 +448,7 @@
 				GCC_PREFIX_HEADER = "$(SRCROOT)/PrefixHeader.pch";
 				INFOPLIST_FILE = chineseToEnglishName/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = YM.chineseToEnglishName;
+				PRODUCT_BUNDLE_IDENTIFIER = com.english.name;
 				PRODUCT_NAME = "英文名";
 			};
 			name = Debug;
@@ -463,7 +463,7 @@
 				GCC_PREFIX_HEADER = "$(SRCROOT)/PrefixHeader.pch";
 				INFOPLIST_FILE = chineseToEnglishName/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = YM.chineseToEnglishName;
+				PRODUCT_BUNDLE_IDENTIFIER = com.english.name;
 				PRODUCT_NAME = "英文名";
 			};
 			name = Release;

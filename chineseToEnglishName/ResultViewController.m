@@ -151,12 +151,12 @@
     
     UIImage *img = [self screenShot];
     //构造分享内容
-    id<ISSContent> publishContent = [ShareSDK content:nil
-                                       defaultContent:nil
+    id<ISSContent> publishContent = [ShareSDK content:@"content"
+                                       defaultContent:@"default content"
                                                 image:[ShareSDK jpegImageWithImage:img quality:1]
-                                                title:nil
+                                                title:@"title"
                                                   url:@"www.google.com"
-                                          description:nil
+                                          description:@"desc"
                                             mediaType:SSPublishContentMediaTypeImage];
     //创建iPad弹出菜单容器,详见第六步
     id<ISSContainer> container = [ShareSDK container];
