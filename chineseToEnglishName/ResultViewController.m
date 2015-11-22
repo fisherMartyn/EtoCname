@@ -151,12 +151,12 @@
     
     UIImage *img = [self screenShot];
     //构造分享内容
-    id<ISSContent> publishContent = [ShareSDK content:@"content"
-                                       defaultContent:@"default content"
+    id<ISSContent> publishContent = [ShareSDK content:@"根据中文名取英文名"
+                                       defaultContent:@"根据中文名取英文名"
                                                 image:[ShareSDK jpegImageWithImage:img quality:1]
-                                                title:@"title"
-                                                  url:@"www.google.com"
-                                          description:@"desc"
+                                                title:@"取英文名"
+                                                  url:@"http://weibo.com/5580956204"
+                                          description:@"根据中文名取英文名"
                                             mediaType:SSPublishContentMediaTypeImage];
     //创建iPad弹出菜单容器,详见第六步
     id<ISSContainer> container = [ShareSDK container];
@@ -229,8 +229,8 @@
         if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
             page = [[PageView alloc] initWithFrame:CGRectMake(i*self.view.frame.size.width + 40, 30, self.view.frame.size.width-80, self.scrollview.contentSize.height -10) and:self.name andEnglish:[NSString stringWithFormat:@"%@ %@",info.englishName,xing] andEFayin:info.englishFayin andCFayin:info.chineseName andPopular:info.popularCnt.intValue];
         } else {
-        //ipad
-            page = [[PageView alloc] initWithFrame:CGRectMake(i*self.view.frame.size.width + 40, 30, self.view.frame.size.width-80, self.scrollview.contentSize.height -10) and:self.name andEnglish:[NSString stringWithFormat:@"%@ %@",info.englishName,xing] andEFayin:info.englishFayin andCFayin:info.chineseName andPopular:info.popularCnt.intValue];
+        //ipad在这里调
+            page = [[PageView alloc] initWithFrame:CGRectMake(i*self.view.frame.size.width + 160, 120, self.view.frame.size.width-320, self.scrollview.contentSize.height -220) and:self.name andEnglish:[NSString stringWithFormat:@"%@ %@",info.englishName,xing] andEFayin:info.englishFayin andCFayin:info.chineseName andPopular:info.popularCnt.intValue];
         }
         [self.scrollview addSubview:page];
     }
@@ -256,7 +256,7 @@
     NSPredicate *pred_sound = [NSPredicate predicateWithFormat:@"chineseNameCnt==%@",[NSNumber numberWithInteger:(self.sounid+1)]]; //soundid+1就是映射
     NSPredicate *pred_length;
     if (self.lengthid == 1) {
-        pred_length = [NSPredicate predicateWithFormat:@"englishNameCnt<6"];
+        pred_length = [NSPredicate predicateWithFormat:@"englishNameCnt<=6"];
     } else if (self.lengthid == 2) {
         pred_length = [NSPredicate predicateWithFormat:@"englishNameCnt>6"];
     }
@@ -609,7 +609,13 @@
         [self addSubview:self.nameLabel];
         WS(ws);
         [self.nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(ws.mas_top).with.offset(60);
+
+            if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
+                make.top.equalTo(ws.mas_top).with.offset(60);
+            }else{//iPad时显示的姓名离顶部远点
+                make.top.equalTo(ws.mas_top).with.offset(140);
+            }
+            
             make.width.equalTo(ws.mas_width).with.offset(-80);
             make.height.equalTo(@45);
             make.centerX.equalTo(ws.mas_centerX);
@@ -645,7 +651,7 @@
         [self addSubview:self.eFayinLabel];
         [self.eFayinLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(ws.englishNameLabel.mas_bottom).with.offset(20);
-            make.width.equalTo(ws.mas_width).with.offset(-140);
+            make.width.equalTo(ws.mas_width).with.offset(-100);
             make.height.mas_equalTo(45);
             make.centerX.equalTo(ws.mas_centerX);
         }];
@@ -661,7 +667,7 @@
         [self addSubview:self.cFayinLabel];
         [self.cFayinLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(ws.eFayinLabel.mas_bottom).with.offset(20);
-            make.width.equalTo(ws.mas_width).with.offset(-160);
+            make.width.equalTo(ws.mas_width).with.offset(-100);
             make.height.mas_equalTo(40);
             make.centerX.equalTo(ws.mas_centerX);
         }];
@@ -679,8 +685,10 @@
         }];
         
         self.textLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-        self.textLabel.text = @"流行：";
-        self.textLabel.textAlignment = NSTextAlignmentRight;
+        self.textLabel.text = @"流行度：";
+        //self.textLabel.textAlignment = NSTextAlignmentRight;
+        self.textLabel.textAlignment = NSTextAlignmentCenter;
+        
         self.textLabel.backgroundColor = [UIColor clearColor];
         self.textLabel.textColor = self.nameLabel.textColor;
         self.textLabel.font = [UIFont systemFontOfSize:20];
@@ -745,19 +753,19 @@
         label.textAlignment = NSTextAlignmentLeft;
         label.textColor = [UIColor whiteColor];
         label.text = title;
-        label.font = [UIFont systemFontOfSize:18];
+        label.font = [UIFont systemFontOfSize:16];
         
         [self addSubview:img];
         [self addSubview:label];
         [img mas_makeConstraints:^(MASConstraintMaker *make) {
             make.height.mas_equalTo(ws.mas_height);
-            make.left.equalTo(ws.mas_left).with.offset(-10);
+            make.left.equalTo(ws.mas_left).with.offset(-14);
             make.top.equalTo(ws.mas_top);
             make.width.equalTo(img.mas_height);
         }];
         [label mas_makeConstraints:^(MASConstraintMaker *make) {
             make.height.equalTo(ws.mas_height);
-            make.left.equalTo(img.mas_right).with.offset(10);
+            make.left.equalTo(img.mas_right).with.offset(0);
             make.top.equalTo(ws.mas_top);
             make.width.equalTo(ws.mas_width).with.offset(22);
         }];
