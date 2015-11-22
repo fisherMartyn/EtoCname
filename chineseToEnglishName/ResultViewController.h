@@ -31,3 +31,7 @@
 -(instancetype) initWithFrame:(CGRect)frame title:(NSString*)title;
 
 @end
+
+@interface NSString (DeviceType) //仅仅根据高度做区分
++(NSString*)currentType;
+@end

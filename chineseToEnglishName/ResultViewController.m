@@ -177,7 +177,7 @@
                                 }
                                 else if (state == SSResponseStateFail)
                                 {
-                                    NSLog(@"分享失败,错误码:%ld,错误描述:%@", [error errorCode], [error errorDescription]);
+                                    NSLog(@"分享失败,错误码:%ld,错误描述:%@", (long)[error errorCode], [error errorDescription]);
                                 }
                             }];
     /*
@@ -220,14 +220,14 @@
     
     
     NSInteger count = self.shownArr.count;
-    self.scrollview.contentSize =CGSizeMake(self.view.frame.size.width*count, self.view.frame.size.height-120-64);
+    self.scrollview.contentSize =CGSizeMake(self.view.frame.size.width*count, self.view.frame.size.height-80-64);
     
     for (int i=0; i<count; ++i) {
         EnglishNameInfo *info = [self.shownArr objectAtIndex:i];
         PageView *page;
         //iphone
         if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
-            page = [[PageView alloc] initWithFrame:CGRectMake(i*self.view.frame.size.width + 40, 30, self.view.frame.size.width-80, self.scrollview.contentSize.height -10) and:self.name andEnglish:[NSString stringWithFormat:@"%@ %@",info.englishName,xing] andEFayin:info.englishFayin andCFayin:info.chineseName andPopular:info.popularCnt.intValue];
+            page = [[PageView alloc] initWithFrame:CGRectMake(i*self.view.frame.size.width + 40, 0, self.view.frame.size.width-80, self.scrollview.contentSize.height -10) and:self.name andEnglish:[NSString stringWithFormat:@"%@ %@",info.englishName,xing] andEFayin:info.englishFayin andCFayin:info.chineseName andPopular:info.popularCnt.intValue];
         } else {
         //ipad在这里调
             page = [[PageView alloc] initWithFrame:CGRectMake(i*self.view.frame.size.width + 160, 120, self.view.frame.size.width-320, self.scrollview.contentSize.height -220) and:self.name andEnglish:[NSString stringWithFormat:@"%@ %@",info.englishName,xing] andEFayin:info.englishFayin andCFayin:info.chineseName andPopular:info.popularCnt.intValue];
@@ -252,7 +252,7 @@
     [genderdict setObject:@"中性" forKey:@"2"];
     [genderdict setObject:@"男性" forKey:@"3"];
     
-    NSPredicate *pred_sex = [NSPredicate predicateWithFormat:@"sexInfo==%@",[genderdict objectForKey:[NSString stringWithFormat:@"%ld",self.sexid]]];
+    NSPredicate *pred_sex = [NSPredicate predicateWithFormat:@"sexInfo==%@",[genderdict objectForKey:[NSString stringWithFormat:@"%ld",(long)self.sexid]]];
     NSPredicate *pred_sound = [NSPredicate predicateWithFormat:@"chineseNameCnt==%@",[NSNumber numberWithInteger:(self.sounid+1)]]; //soundid+1就是映射
     NSPredicate *pred_length;
     if (self.lengthid == 1) {
@@ -452,7 +452,7 @@
     
     combine = [NSCompoundPredicate andPredicateWithSubpredicates:@[predictate]];
     if (self.sexid) {
-        combine = [NSCompoundPredicate andPredicateWithSubpredicates:@[pred_sex]];
+        combine = [NSCompoundPredicate andPredicateWithSubpredicates:@[combine,pred_sex]];
     }
     if (self.sounid) {
         combine = [NSCompoundPredicate andPredicateWithSubpredicates:@[combine,pred_sound]];
@@ -589,6 +589,7 @@
 
 @end
 @implementation PageView
+
 -(instancetype) initWithFrame:(CGRect)frame and:(NSString *)name andEnglish:(NSString *)englishName andEFayin:(NSString *)englishFayin andCFayin:(NSString *)chineseFayin andPopular:(int)popular
 {
     self = [super initWithFrame:frame];
@@ -611,7 +612,11 @@
         [self.nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
 
             if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
-                make.top.equalTo(ws.mas_top).with.offset(60);
+                if ([[NSString currentType] isEqualToString:@"iPhone4"]) {
+                    make.top.equalTo(ws.mas_top).with.offset(10);
+                } else {
+                    make.top.equalTo(ws.mas_top).with.offset(60);
+                }
             }else{//iPad时显示的姓名离顶部远点
                 make.top.equalTo(ws.mas_top).with.offset(140);
             }
@@ -774,4 +779,21 @@
     
 }
 
+@end
+
+@implementation NSString (DeviceType)
++(NSString *)currentType
+{
+    NSString *preName;
+    if (480.0f == [UIScreen mainScreen].bounds.size.height) {
+        preName = @"iPhone4";
+    }else if (568.0f == [UIScreen mainScreen].bounds.size.height) {
+        preName = @"iPhone5";
+    } else if (667.0f == [UIScreen mainScreen].bounds.size.height){
+        preName  = @"iPhone6";
+    } else{
+        preName = @"iPhone6p";
+    }
+    return preName;
+}
 @end
