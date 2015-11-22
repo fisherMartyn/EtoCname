@@ -228,6 +228,14 @@
                         annotation:annotation
                         wxDelegate:self];
 }
+- (UIInterfaceOrientationMask)supportedInterfaceOrientationsForWindow:(UIWindow *)window
+{
+     return UIInterfaceOrientationMaskLandscape;
+}
+-(BOOL)shouldAutorotate
+{
+    return false;
+}
 
 
 @end
